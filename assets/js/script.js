@@ -21,7 +21,7 @@ $(document).ready(function () {
 
         // If the input box is blank, the value will not be saved and an alert box will pop up
         if (inputEl.val().trim() === "") {
-            $("form").append('<div id="alert" role="alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">Error! You have to type something. Please try again.</div>')
+            $("form").append('<div id="alert" role="alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-4 rounded">Error! You have to type something. Please try again.</div>')
             return
         } else {
             // The new ingredient is added to the ingredientsSaved array
@@ -35,6 +35,47 @@ $(document).ready(function () {
     // Event listener for the submit button
     submitBtnEl.on("click", function (event) {
         event.preventDefault();
+        $("#alert").remove();
         saveIngredient();
     });
+
+
+    // ******************
+    // SHOPPING-LIST.HTML
+    // ******************
+
+    var clearBtnEl = $("#clear-btn");
+    var listEl = $("#ingredients-list");
+
+    // The following function renders items in a list as <li> elements
+    function createList() {
+        var ingredientsSaved = JSON.parse(localStorage.getItem("ingredient"))
+        // Render a new li for each score
+        for (var i = 0; i < ingredientsSaved.length; i++) {
+            listEl.append("<li>" + ingredientsSaved[i] + "</li>");
+        }
+    }
+
+    // Event listener and function to clear the shopping list
+    clearBtnEl.on("click", function() {
+        localStorage.clear();
+        listEl.html("");
+    })
+
+    // This function is being called below and will run when the page loads
+    function init() {
+        // Retrieve the stored ingredients from localStorage
+        var storedIngredients = JSON.parse(localStorage.getItem("ingredient"));
+
+        // If ingredients were retrieved from localStorage, update the shopping list array to it
+        if (storedIngredients !== null) {
+            ingredientsSaved = storedIngredients;
+        } else {
+            return;
+        }
+        createList();
+    }
+    
+    init();
+
 });

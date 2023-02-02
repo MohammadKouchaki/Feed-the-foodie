@@ -5,6 +5,10 @@ $(document).ready(function () {
     var listEl = $("#ingredients-list");
     var printEl = $("#print-btn");
 
+    // ***************************
+    // INGREDIENTS / SHOPPING LIST
+    // ***************************
+
     // Function to save new ingredients to local storage
     function saveIngredient() {
         // An empty array is created first
@@ -18,7 +22,7 @@ $(document).ready(function () {
 
         // If the input box is blank, the value will not be saved and an alert box will pop up
         if (inputEl.val().trim() === "") {
-            $("form").append('<div id="alert" role="alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-4 rounded">Error! You have to type something. Please try again.</div>')
+            // $("form").append('<div id="alert" role="alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-4 rounded">Error! You have to type something. Please try again.</div>')
             return
         } else {
             // The new ingredient is added to the ingredientsSaved array
@@ -30,14 +34,13 @@ $(document).ready(function () {
 
 
     // Event listener for the submit button
-    submitBtnEl.on("click", function (event) {
-        event.preventDefault();
+    submitBtnEl.on("click", function () {
         $("#alert").remove();
         saveIngredient();
+        listEl.append("<li><input type='checkbox'id='" + inputEl.val() + "'>  " + ingredientsSaved[i] + "</li>");
         inputEl.val("");
-        location.reload();
     });
-  
+
 
     // The following function renders items in a list as <li> elements
     function createList() {
@@ -58,6 +61,56 @@ $(document).ready(function () {
     printEl.on("click", function () {
         window.print();
     })
+
+
+    // *****************
+    // RECIPE FAVOURITES
+    // *****************
+
+    var mealDBAPI = "https://www.themealdb.com/api/json/v1/1/random.php";
+    var recipeHeadingEl = $("#recipe-heading");
+    var ingListEl = $("#recipe-ingredients-list");
+    var recStepEl = $("#recipe-instructions");
+    var recLinkEl = $("#recipe-link");
+    var cuisineEl = $("#cuisine");
+    var categoryEl = $("#category");
+    var tagsEl = $("#tags");
+
+    fetch(mealDBAPI)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            displayRecipe(data.meals[0]);
+            console.log(data.meals[0])
+        })
+
+
+    function displayRecipe(data) {
+        recipeHeadingEl.text(data.strMeal);
+        recStepEl.text(data.strInstructions);
+        recLinkEl.attr("href", data.strSource);
+        cuisineEl.text(data.strArea);
+        categoryEl.text(data.strCategory);
+        tagsEl.text(data.strTags);
+
+        for (var i = 1; i < 22; i++) {
+            var strIng = "strIngredient" + i;
+            var strMeas = "strMeasure" + i;
+            if (data[strIng] === "") {
+                return;
+            } else if (data[strIng] === null) {
+                return;
+            } else {
+                ingListEl.append("<li>" + data[strMeas] + " " + data[strIng] + "<li");
+            }
+        };
+    }
+
+
+
+
+
 
     // This function is being called below and will run when the page loads
     function init() {

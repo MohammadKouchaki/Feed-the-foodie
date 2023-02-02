@@ -1,12 +1,9 @@
 $(document).ready(function () {
-
-    // ***********
-    // SAMPLE.HTML
-    // ***********
-
     var submitBtnEl = $("#submitbtn");
     var inputEl = $("#ingredients-input");
-
+    var clearBtnEl = $("#clear-btn");
+    var listEl = $("#ingredients-list");
+    var printEl = $("#print-btn");
 
     // Function to save new ingredients to local storage
     function saveIngredient() {
@@ -37,16 +34,10 @@ $(document).ready(function () {
         event.preventDefault();
         $("#alert").remove();
         saveIngredient();
+        inputEl.val("");
+        location.reload();
     });
-
-
-    // ******************
-    // SHOPPING-LIST.HTML
-    // ******************
-
-    var clearBtnEl = $("#clear-btn");
-    var listEl = $("#ingredients-list");
-    var printEl = $("#print-btn");
+  
 
     // The following function renders items in a list as <li> elements
     function createList() {
@@ -83,5 +74,6 @@ $(document).ready(function () {
     }
 
     init();
+
 
 });

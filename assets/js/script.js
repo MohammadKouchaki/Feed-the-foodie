@@ -63,9 +63,9 @@ $(document).ready(function () {
     })
 
 
-    // *****************
-    // RECIPE FAVOURITES
-    // *****************
+    // **************
+    // RECIPE DISPLAY
+    // **************
 
     var mealDBAPI = "https://www.themealdb.com/api/json/v1/1/random.php";
     var recipeHeadingEl = $("#recipe-heading");
@@ -75,6 +75,7 @@ $(document).ready(function () {
     var cuisineEl = $("#cuisine");
     var categoryEl = $("#category");
     var tagsEl = $("#tags");
+    var saveRepBtnEl = $("#recipe-save-btn");
 
     fetch(mealDBAPI)
         .then(function (response) {
@@ -85,6 +86,7 @@ $(document).ready(function () {
             console.log(data.meals[0])
         })
 
+    var recipeId
 
     function displayRecipe(data) {
         recipeHeadingEl.text(data.strMeal);
@@ -93,6 +95,8 @@ $(document).ready(function () {
         cuisineEl.text(data.strArea);
         categoryEl.text(data.strCategory);
         tagsEl.text(data.strTags);
+
+        recipeId = data.idMeal;
 
         for (var i = 1; i < 22; i++) {
             var strIng = "strIngredient" + i;
@@ -107,10 +111,25 @@ $(document).ready(function () {
         };
     }
 
+    // Function to save the recipe Id to local storage
+    function saveRecipe() {
+        // An empty array is created first
+        var recipeSaved = [];
 
+        // If local storage is NOT empty, the existing data is added to the recipeSaved array
+        var alreadyInStorage = localStorage.getItem("recipe");
+        if (alreadyInStorage !== null) {
+            recipeSaved = JSON.parse(alreadyInStorage);
+        }
 
+        // The new recipe Id is added to the recipeSaved array
+        recipeSaved.push(recipeId);
+        // recipeSaved is added to local storage with a key of "recipe"
+        localStorage.setItem("recipe", JSON.stringify(recipeSaved));
+    }
 
-
+    // Event listener for the save the recipe button
+    saveRepBtnEl.on("click", saveRecipe)
 
     // This function is being called below and will run when the page loads
     function init() {

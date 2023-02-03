@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     // The following function renders items in a list as <li> elements
     function createList() {
-        var ingredientsSaved = JSON.parse(localStorage.getItem("ingredient"))
+        var ingredientsSaved = JSON.parse(localStorage.getItem("ingredient"));
         // Render a new li for each score
         for (var i = 0; i < ingredientsSaved.length; i++) {
             listEl.append("<li><input type='checkbox'id='" + ingredientsSaved[i] + "'>  " + ingredientsSaved[i] + "</li>");

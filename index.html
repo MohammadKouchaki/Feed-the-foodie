@@ -29,7 +29,7 @@
             <option value='chorizo'>chorizo</option>
             <option value='duck'>duck</option>
             <option value='lamb'>lamb</option>
-            <option value='minced beef'>minced beef</option>
+            <option value='minced_beef'>minced beef</option>
             <option value='pork'>pork</option>
             <option value='sausages'>sausages</option>
             <option value='veal'>veal</option>
@@ -41,17 +41,17 @@
             <option value='aubergine'>aubergine</option>
             <option value='avocado'>avocado</option>
             <option value='broccoli'>broccoli</option>
-            <option value='butternut squash'>butternut squash</option>
+            <option value='butternut_squash'>butternut squash</option>
             <option value='carrots'>carrots</option>
             <option value='celeriac'>celeriac</option>
             <option value='celery'>celery</option>
             <option value='cucumber'>cucumber</option>
             <option value='eggplants'>eggplants</option>
             <option value='fennel'>fennel</option>
-            <option value='fennel bulb'>fennel bulb</option>
+            <option value='fennel_bulb'>fennel bulb</option>
             <option value='fenugreek'>fenugreek</option>
             <option value='garlic'>garlic</option>
-            <option value='green chilli'>green chilli</option>
+            <option value='green_chilli'>green chilli</option>
             <option value='jalapeno'>jalapeno</option>
             <option value='kale'>kale</option>
             <option value='lettuce'>lettuce</option>
@@ -60,7 +60,7 @@
             <option value='potatoes'>potatoes</option>
             <option value='shallots'>shallots</option>
             <option value='spinach'>spinach</option>
-            <option value='spring onions'>spring onions</option>
+            <option value='spring_onions'>spring onions</option>
             <option value='squash'>squash</option>
             <option value='sweetcorn'>sweetcorn</option>
             <option value='tomato'>tomato</option>
@@ -108,7 +108,40 @@
             <option value='rice'>rice</option>
         </select>
 
-        <button name="ingredients" type="submit">Submit</button>
+        <button id="ingredients-btn" name="ingredients" type="submit">Submit</button>
+    </form>
+
+    <form action="/action_page.php" method="get">
+        <label for="cuisine">Choose a cuisine:</label>
+        <select id="cuisine" name="cuisine">
+            <option value="" disabled selected>-</option>
+            <option value='American'>American</option>
+            <option value='British'>British</option>
+            <option value='Canadian'>Canadian</option>
+            <option value='Chinese'>Chinese</option>
+            <option value='Croatian'>Croatian</option>
+            <option value='Dutch'>Dutch</option>
+            <option value='Egyptian'>Egyptian</option>
+            <option value='French'>French</option>
+            <option value='Greek'>Greek</option>
+            <option value='Indian'>Indian</option>
+            <option value='Irish'>Irish</option>
+            <option value='Italian'>Italian</option>
+            <option value='Jamaican'>Jamaican</option>
+            <option value='Jamaican'>Jamaican</option>
+            <option value='Kenyan'>Kenyan</option>
+            <option value='Malaysian'>Malaysian</option>
+            <option value='Mexican'>Mexican</option>
+            <option value='Moroccan'>Moroccan</option>
+            <option value='Polish'>Polish</option>
+            <option value='Portuguese'>Portuguese</option>
+            <option value='Spanish'>Spanish</option>
+            <option value='Thai'>Thai</option>
+            <option value='Vietnamise'>Vietnamise</option>
+
+        </select>
+        
+        <button id="cuisine-btn" name="cuisine" type="submit">Submit</button>
     </form>
 
 

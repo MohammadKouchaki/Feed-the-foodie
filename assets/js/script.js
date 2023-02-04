@@ -12,23 +12,22 @@ $(document).ready(function () {
     // Function to save new ingredients to local storage
     function saveIngredient() {
         // An empty array is created first
-        var ingredientsSaved = [];
+        var ingredientsSavedOne = [];
 
-        // If local storage is NOT empty, the existing data is added to the ingredientsSaved array
-        var alreadyInStorage = localStorage.getItem("ingredient");
-        if (alreadyInStorage !== null) {
-            ingredientsSaved = JSON.parse(alreadyInStorage);
+        // If local storage is NOT empty, the existing data is added to the ingredientsSavedOne array
+        var alreadyInStorageOne = localStorage.getItem("ingredient");
+        if (alreadyInStorageOne !== null) {
+            ingredientsSavedOne = JSON.parse(alreadyInStorageOne);
         }
 
-        // If the input box is blank, the value will not be saved and an alert box will pop up
+        // If the input box is blank, the value will not be saved
         if (inputEl.val().trim() === "") {
-            // $("form").append('<div id="alert" role="alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-4 rounded">Error! You have to type something. Please try again.</div>')
             return
         } else {
-            // The new ingredient is added to the ingredientsSaved array
-            ingredientsSaved.push(inputEl.val());
-            // ingredientsSaved is added to local storage with a key of "ingredient"
-            localStorage.setItem("ingredient", JSON.stringify(ingredientsSaved));
+            // The new ingredient is added to the ingredientsSavedOne array
+            ingredientsSavedOne.push(inputEl.val());
+            // ingredientsSavedOne is added to local storage with a key of "ingredient"
+            localStorage.setItem("ingredient", JSON.stringify(ingredientsSavedOne));
         };
     }
 
@@ -75,6 +74,7 @@ $(document).ready(function () {
     var cuisineEl = $("#cuisine");
     var categoryEl = $("#category");
     var tagsEl = $("#tags");
+    var saveIngBtnEl = $("#add-ing-btn");
     var saveRepBtnEl = $("#recipe-save-btn");
 
     fetch(mealDBAPI)
@@ -83,7 +83,6 @@ $(document).ready(function () {
         })
         .then(function (data) {
             displayRecipe(data.meals[0]);
-            console.log(data.meals[0])
         })
 
     var recipeId
@@ -111,6 +110,41 @@ $(document).ready(function () {
         };
     }
 
+    // Function to save all ingredients to local storage
+    function saveAllIngredients(urlAPIwithId) {
+        // An empty array is created first
+        var ingredientsSavedAll = [];
+
+        // If local storage is NOT empty, the existing data is added to the ingredientsSavedAll array
+        var alreadyInStorageAll = localStorage.getItem("ingredient");
+        if (alreadyInStorageAll !== null) {
+            ingredientsSavedAll = JSON.parse(alreadyInStorageAll);
+        }
+
+        fetch(urlAPIwithId)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                var dataAll = data.meals[0]
+                for (var i = 1; i < 22; i++) {
+                    var strIngAll = "strIngredient" + i;
+                    var strMeasAll = "strMeasure" + i;
+                    if (dataAll[strIngAll] === "") {
+                        return;
+                    } else if (dataAll[strIngAll] === null) {
+                        return;
+                    } else {
+                        // The new ingredients are added to the ingredientsSavedAll array
+                        ingredientsSavedAll.push(dataAll[strMeasAll] + " " + dataAll[strIngAll]);
+                        // ingredientsSavedAll is added to local storage with a key of "ingredient"
+                        localStorage.setItem("ingredient", JSON.stringify(ingredientsSavedAll));
+                    }
+                };
+            })
+
+    }
+
     // Function to save the recipe Id to local storage
     function saveRecipe() {
         // An empty array is created first
@@ -128,8 +162,16 @@ $(document).ready(function () {
         localStorage.setItem("recipe", JSON.stringify(recipeSaved));
     }
 
+    // Event listener for the button to save all the ingredients
+    saveIngBtnEl.on("click", function () {
+        var urlAPIwithId = "https://www.themealdb.com/api/json/v1/1/random.php?i=" + recipeId;
+        saveAllIngredients(urlAPIwithId);
+    });
+
     // Event listener for the save the recipe button
-    saveRepBtnEl.on("click", saveRecipe)
+    saveRepBtnEl.on("click", saveRecipe);
+
+
 
     // This function is being called below and will run when the page loads
     function init() {

@@ -1,33 +1,32 @@
 $(document).ready(function () {
     var mealDBAPIById = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
     var recipeDivEl = $(".recipe");
-    var recipeHeadingEl
 
     function displayRecipe(data) {
-        
         // The contents of this div are dynamically created with JS
-        var html = '<h2 id="recipe-heading" class="my-4 font-bold">' + recipeHeadingEl + '</h2>' +
-            '<h3 id="recipe-ingredients-heading" class="my-2 font-medium">Ingredients</h3>' +
-            '<ul id="recipe-ingredients-list"></ul>' +
-            '<h3 id="recipe-instructions-heading" class="my-2 font-medium">Instructions</h3>' +
-            '<p id="recipe-instructions"></p>' +
-            '<a id="recipe-link" href="#" target="_blank" class="my-2 font-medium">This the link to the recipe</a>' +
-            '<button id="delete-recipe" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-6">Delete this recipe</button>' +
-            '<ol id="recipe-info">' +
-            '<li id="cuisine"></li>' +
-            '<li id="category"></li>' +
-            '<li id="tags"></li>' + 
+        console.log(data);
+        var html = '<h2 id="recipe-heading-' + data.idMeal + '" class="my-4 font-bold">Recipe title</h2>' +
+            '<h3 id="recipe-ingredients-heading-' + data.idMeal + '" class="my-2 font-medium">Ingredients</h3>' +
+            '<ul id="recipe-ingredients-list-' + data.idMeal + '"></ul>' +
+            '<h3 id="recipe-instructions-heading-' + data.idMeal + '" class="my-2 font-medium">Instructions</h3>' +
+            '<p id="recipe-instructions-' + data.idMeal + '"></p>' +
+            '<a id="recipe-link-' + data.idMeal + '" href="#" target="_blank" class="my-2 font-medium">This the link to the recipe</a>' +
+            '<button id="delete-recipe-' + data.idMeal + '" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-6">Delete this recipe</button>' +
+            '<ol id="recipe-info-' + data.idMeal + '">' +
+            '<li id="cuisine-' + data.idMeal + '"></li>' +
+            '<li id="category-' + data.idMeal + '"></li>' +
+            '<li id="tags-' + data.idMeal + '"></li>' +
             '</ol>';
 
         // The html variable is added to the div created in HTML
         recipeDivEl.append(html);
 
-        recipeHeadingEl = $("#recipe-heading").text(data.strMeal);
-        // $("#recipe-instructions").text(data.strInstructions);
-        // $("#recipe-link").attr("href", data.strSource);
-        // $("#cuisine").text(data.strArea);
-        // $("#category").text(data.strCategory);
-        // $("#tags").text(data.strTags);
+        $("#recipe-heading-"+ data.idMeal).text(data.strMeal);
+        $("#recipe-instructions-"+ data.idMeal).text(data.strInstructions);
+        $("#recipe-link-"+ data.idMeal).attr("href", data.strSource);
+        $("#cuisine-"+ data.idMeal).text(data.strArea);
+        $("#category-"+ data.idMeal).text(data.strCategory);
+        $("#tags-"+ data.idMeal).text(data.strTags);
 
         for (var i = 1; i < 22; i++) {
             var strIng = "strIngredient" + i;
@@ -42,11 +41,11 @@ $(document).ready(function () {
         };
     }
 
-    var recipeId;
 
-    function fetchById(newURL) {
+    function init() {
         // Retrieve the stored recipes from localStorage
         var storedRecipe = JSON.parse(localStorage.getItem("recipe"));
+        var recipeId;
 
         // If recipes were retrieved from localStorage, update the div for favourites
         if (storedRecipe !== null) {
@@ -54,49 +53,20 @@ $(document).ready(function () {
         } else {
             return;
         }
+        
 
         // For as many id as are saved to local storage fetch the API based on the specific ID saved and display it to the screen
-        fetch(newURL)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                displayRecipe(data.meals[0]);
-            })
-
-    }
-
-    function init() {
-        var newURL
-        var storageId = JSON.parse(localStorage.getItem("recipe"))
-        for (var i = 0; i < storageId.length; i++) {
-            newURL = mealDBAPIById + storageId[i]
-            fetchById(newURL);
+        for (var i = 0; i < recipeId.length; i++) {
+            fetch(mealDBAPIById + recipeId[i])
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    displayRecipe(data.meals[0]);
+                })
         }
     }
 
-    init()
-
-    // const tempEl = document.getElementById("temp")
-    
-    // fetch(queryURL)
-    // .then(function (response) {
-    //     return response.json();
-    // })
-    // .then(function (data) {
-    //     // console.log(data);
-    //     todayweatherEl.classList.remove("d-none");
-    //     // Parse response to display current weather
-    //     const currentDate = new Date(data.dt * 1000);
-    //     const day = currentDate.getDate();
-    //     const month = currentDate.getMonth() + 1;
-    //     const year = currentDate.getFullYear();
-    //     nameEl.innerHTML = data.name + " (" + month + "/" + day + "/" + year + ") ";
-    //     let weatherPic = data.weather[0].icon;
-    //     currentPicEl.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
-    //     currentPicEl.setAttribute("alt", data.weather[0].description);
-    //     currentTempEl.innerHTML = "Temperature: " + k2f(data.main.temp) + " &#176F";
-    //     currentHumidityEl.innerHTML = "Humidity: " + data.main.humidity + "%";
-    //     currentWindEl.innerHTML = "Wind Speed: " + data.wind.speed + " MPH";
+    init();
 
 });

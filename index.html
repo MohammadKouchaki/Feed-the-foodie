@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px'
+                },
+                extend: {
+                    colors: {
+                        lightOrange: '#f79970',
+                        darkOrange: '#f57f4c',
+                        lightGreen: '#819d69',
+                        darkGreen: '#628444',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Feed The Foodie</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6 min-w-full">
+        <!-- Flex Container -->
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div class="pt-1">
+                <img src="./assets/images/logoipsum-218.svg" alt="Company Logo">
+            </div>
+            <!-- Menu Items -->
+            <div class="hidden md:flex space-x-6">
+                <a href="x" class="hover:text-darkOrange">Recipes</a>
+                <a href="x" class="hover:text-darkOrange">Restaurants</a>
+                <a href="x" class="hover:text-darkOrange">My Favourites</a>
+                <a href="x" class="hover:text-darkOrange">Shopping List</a>
+                <a href="x" class="hover:text-darkOrange">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section-->
+    <section class="flex bg-[url('./assets/images/hero-img.jpg')] bg-center bg-no-repeat bg-cover p-6" id="hero">
+        <!-- Flex Container -->
+        <div class="container flex flex-col m-auto justify-center" id="hero-container">
+            <!-- Hero Text-->
+            <div class="flex flex-col space-y-4 items-center p-6 justify-around md:space-y-8">
+                <h1 class="text-3xl font-bold text-center md:text-5xl">
+                    Hey there, foodie!
+                </h1>
+                <p class="text-center md:text-lg">
+                    Hungry for something, but don't know what? You've come to the right place! We are here to help you
+                    to discover your next unforgettably delicious meal. Let's start by deciding if you want to cook or
+                    go out to eat.
+                </p>
+                <!-- Hero Buttons -->
+                <div class="flex flex-col space-y-4 md:flex-row md:space-x-12 md:space-y-0 md:text-lg">
+                    <a href="#" class="p-2 w-32 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange">Cooking</a>
+                    <a href="#" class="p-2 w-32 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen">Eating Out</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

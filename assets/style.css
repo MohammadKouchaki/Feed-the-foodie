@@ -1,3 +1,9 @@
+.hamburger {
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+}
+
 #hero {
     height: 500px;
 }

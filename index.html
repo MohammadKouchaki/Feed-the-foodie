@@ -26,6 +26,7 @@
             }
         }
     </script>
+    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/style.css">
     <title>Feed The Foodie</title>
 </head>
@@ -47,6 +48,21 @@
                 <a href="x" class="hover:text-darkOrange">Shopping List</a>
                 <a href="x" class="hover:text-darkOrange">Home</a>
             </div>
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="block hamburger md:hidden">
+                <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+                <i id="xmark" class="fa-solid fa-xmark text-2xl hidden"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <div id="menu" class="absolute hidden flex flex-col items-stretch text-center self-end p-6 mt-3 space-y-3 bg-white w-auto sm:self-center left-6 right-6 drop-shadow-md">
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Home</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Recipes</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Restaurants</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">My Favourites</a>
+                <a href="x">Shopping List</a>
+            </div>
         </div>
     </nav>
 
@@ -66,12 +82,17 @@
                 </p>
                 <!-- Hero Buttons -->
                 <div class="flex flex-col space-y-4 md:flex-row md:space-x-12 md:space-y-0 md:text-lg">
-                    <a href="#" class="p-2 w-32 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange">Cooking</a>
-                    <a href="#" class="p-2 w-32 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen">Eating Out</a>
+                    <a href="#"
+                        class="p-2 w-32 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange">Cooking</a>
+                    <a href="#"
+                        class="p-2 w-32 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen">Eating
+                        Out</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>

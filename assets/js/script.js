@@ -1,10 +1,7 @@
 $(document).ready(function () {
-    // ********************
-    // SEARCH BY INGREDIENT
-    // ********************
-
     var spoonacularUrlIng = "https://api.spoonacular.com/recipes/findByIngredients?number=3&ignorePantry=true&apiKey=34486790fc234b2daa001d801bc76511&ingredients=";
     var spoonacularUrlCui = "https://api.spoonacular.com/recipes/complexSearch?number=3&apiKey=34486790fc234b2daa001d801bc76511&cuisine=";
+    var spoonacularUrlMeal = "https://api.spoonacular.com/recipes/complexSearch?number=3&apiKey=34486790fc234b2daa001d801bc76511&type="
 
     var meatsEl = $("#meats");
     var vegetablesEl = $("#vegetables");
@@ -12,7 +9,13 @@ $(document).ready(function () {
     var othersEl = $("#others")
     var submitBtnIEl = $("#ingredients-btn");
     var submitBtnCEl = $("#cuisine-btn")
-    var cuisineEl = $("#cuisine")
+    var cuisineEl = $("#cuisine");
+    var submitBtnMealEl = $("#meal-btn");
+    var mealEl = $("#meal");
+
+    // ********************
+    // SEARCH BY INGREDIENT
+    // ********************
 
     // Event listener for the submit button (ingredients)
     submitBtnIEl.on("click", function (event) {
@@ -32,7 +35,7 @@ $(document).ready(function () {
                     if (othersEl.val() !== null) {
                         newUrlIngredients = `${spoonacularUrlIng}${meatsEl.val()},${vegetablesEl.val()},${fruitsEl.val()},${othersEl.val()}`;
                     }
-                // Meat yes, Vegetables yes, Fruit no
+                    // Meat yes, Vegetables yes, Fruit no
                 } else {
                     // Meat yes, Vegetables yes, Fruit no, Others yes
                     if (othersEl.val() !== null) {
@@ -105,8 +108,6 @@ $(document).ready(function () {
             })
     })
 
-
-
     // *****************
     // SEARCH BY CUISINE
     // *****************
@@ -115,7 +116,7 @@ $(document).ready(function () {
     submitBtnCEl.on("click", function (event) {
         event.preventDefault();
 
-        var newUrlCuisine = spoonacularUrlCui + cuisineEl.val()
+        var newUrlCuisine = spoonacularUrlCui + cuisineEl.val();
 
         fetch(newUrlCuisine)
             .then(function (response) {
@@ -129,5 +130,19 @@ $(document).ready(function () {
     // *******************
     // SEARCH BY MEAL TYPE
     // *******************
+
+    submitBtnMealEl.on("click", function (event) {
+        event.preventDefault();
+
+        var newUrlMeal = spoonacularUrlMeal + mealEl.val();
+
+        fetch(newUrlMeal)
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (data) {
+                console.log(data)
+            })
+    })
 
 });

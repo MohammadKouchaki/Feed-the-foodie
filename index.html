@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>🥕🥘🍽️Let's cook!</title>
+    <title>🥕🥘Let's cook!</title>
 </head>
 
 <body>
-    <h2>Please choose at least of ingredient:</h2>
+    <h2>Please choose at least one ingredient:</h2>
     <form action="/action_page.php" method="get">
         <label for="meats">Choose a type of meat/fish:</label>
         <select id="meats" name="meats">
@@ -94,7 +94,7 @@
         <button id="ingredients-btn" name="ingredients" type="submit">Submit</button>
     </form>
 
-    <h2>Or choose a type of cuisine:</h2>
+    <h2>Choose a type of cuisine:</h2>
     <form action="/action_page.php" method="get">
         <label for="cuisine">Choose a cuisine:</label>
         <select id="cuisine" name="cuisine">
@@ -121,6 +121,26 @@
         </select>
 
         <button id="cuisine-btn" name="cuisine" type="submit">Submit</button>
+    </form>
+
+    <h2>Choose a type of meal:</h2>
+    <form action="/action_page.php" method="get">
+        <label for="meal">Choose a type of meal:</label>
+        <select id="meal" name="meal">
+            <option value="" disabled selected>-</option>
+            <option value='appetizer'>appetizer</option>
+            <option value='breakfast'>breakfast</option>
+            <option value='dessert'>dessert</option>
+            <option value='fingerfood'>fingerfood</option>
+            <option value='main_course'>main course</option>
+            <option value='salad'>salad</option>
+            <option value='sauce'>sauce</option>
+            <option value='snack'>snack</option>
+            <option value='side_dish'>side dish</option>
+            <option value='soup'>soup</option>
+        </select>
+
+        <button id="meal-btn" name="meal" type="submit">Submit</button>
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

@@ -12,7 +12,7 @@ $(document).ready(function () {
     var cuisineEl = $("#cuisine");
     var submitBtnMealEl = $("#meal-btn");
     var mealEl = $("#meal");
-
+    var saveBtnEl = $(".save-recipe-btn")
 
     // ***************
     // DISPLAY RECIPES
@@ -22,18 +22,21 @@ $(document).ready(function () {
         $("#recipe-display").removeAttr("hidden");
 
         // Recipe 1
+        $("#recipe1").attr("data-id", data[0].id);
         $("#recipe-heading1").text(data[0].title)
         $("#recipe-img1").attr("src", data[0].image)
         $("#recipe-ingredients-list1").text()
 
 
         // Recipe 2
+        $("#recipe2").attr("data-id", data[1].id);
         $("#recipe-heading2").text(data[1].title)
         $("#recipe-img2").attr("src", data[1].image)
         $("#recipe-ingredients-list2").text()
 
 
         // Recipe 3
+        $("#recipe3").attr("data-id", data[2].id);
         $("#recipe-heading3").text(data[2].title)
         $("#recipe-img3").attr("src", data[2].image)
         $("#recipe-ingredients-list3").text()
@@ -82,6 +85,36 @@ $(document).ready(function () {
             })
     }
 
+    // *************************************
+    // SAVE ALL INGREDIENTS TO SHOPPING LIST
+    // *************************************
+
+    // *************************
+    // SAVE RECIPE TO FAVOURITES
+    // *************************
+
+    function saveRecipe(data) {
+        var recipeId = data
+
+        // An empty array is created first
+        var recipeSaved = [];
+
+        // If local storage is NOT empty, the existing data is added to the recipeSaved array
+        var alreadyInStorage = localStorage.getItem("recipe");
+        if (alreadyInStorage !== null) {
+            recipeSaved = JSON.parse(alreadyInStorage);
+        }
+
+        // The new recipe Id is added to the recipeSaved array
+        recipeSaved.push(recipeId);
+        // recipeSaved is added to local storage with a key of "recipe"
+        localStorage.setItem("recipe", JSON.stringify(recipeSaved));
+    }
+
+    saveBtnEl.on("click", function(event) {
+        var id = $(this).parents().attr("data-id");
+        saveRecipe(id);
+    })
 
 
     // ********************
@@ -218,6 +251,5 @@ $(document).ready(function () {
             })
     })
 
-
-
+ 
 });

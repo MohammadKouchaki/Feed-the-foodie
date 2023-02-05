@@ -13,6 +13,27 @@ $(document).ready(function () {
     var submitBtnMealEl = $("#meal-btn");
     var mealEl = $("#meal");
 
+    
+    // ***************
+    // DISPLAY RECIPES
+    // ***************
+
+    function displayRecipe(data) {
+       
+        // Recipe 1
+        $("#recipe-heading1").text(data[0].title)
+        $("#recipe-img1").attr("src", data[0].image)
+
+        // Recipe 2
+        $("#recipe-heading2").text(data[1].title)
+        $("#recipe-img2").attr("src", data[1].image)
+
+        // Recipe 3
+        $("#recipe-heading3").text(data[2].title)
+        $("#recipe-img3").attr("src", data[2].image)
+    }
+
+    
     // ********************
     // SEARCH BY INGREDIENT
     // ********************
@@ -97,14 +118,13 @@ $(document).ready(function () {
             }
 
         }
-        console.log(newUrlIngredients)
 
         fetch(newUrlIngredients)
             .then(function (response) {
                 return response.json()
             })
             .then(function (data) {
-                console.log(data)
+                displayRecipe(data)
             })
     })
 
@@ -123,7 +143,8 @@ $(document).ready(function () {
                 return response.json()
             })
             .then(function (data) {
-                console.log(data)
+                displayRecipe(data.results);
+                console.log(data.results);
             })
     })
 
@@ -141,8 +162,11 @@ $(document).ready(function () {
                 return response.json()
             })
             .then(function (data) {
-                console.log(data)
+                displayRecipe(data.results)
+                console.log(data.results)
             })
     })
+
+
 
 });

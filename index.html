@@ -21,12 +21,17 @@
                         darkOrange: '#f57f4c',
                         lightGreen: '#819d69',
                         darkGreen: '#628444',
+                        darkGray: '#424242'
                     }
                 }
             }
         }
     </script>
     <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./assets/style.css">
     <title>Feed The Foodie</title>
 </head>
@@ -37,16 +42,16 @@
         <!-- Flex Container -->
         <div class="flex items-center justify-between">
             <!-- Logo -->
-            <div class="pt-1">
-                <img src="./assets/images/logoipsum-218.svg" alt="Company Logo">
+            <div>
+                <img src="./assets/images/Logo.png" class="h-10" alt="Company Logo">
             </div>
             <!-- Menu Items -->
             <div class="hidden md:flex space-x-6">
+                <a href="x" class="hover:text-darkOrange">Home</a>
                 <a href="x" class="hover:text-darkOrange">Recipes</a>
                 <a href="x" class="hover:text-darkOrange">Restaurants</a>
                 <a href="x" class="hover:text-darkOrange">My Favourites</a>
                 <a href="x" class="hover:text-darkOrange">Shopping List</a>
-                <a href="x" class="hover:text-darkOrange">Home</a>
             </div>
             <!-- Hamburger Icon -->
             <button id="menu-button" class="block hamburger md:hidden">
@@ -56,7 +61,8 @@
         </div>
         <!-- Mobile Menu -->
         <div class="md:hidden">
-            <div id="menu" class="absolute hidden flex flex-col items-stretch text-center self-end p-6 mt-3 space-y-3 bg-white w-auto sm:self-center left-6 right-6 drop-shadow-md">
+            <div id="menu"
+                class="absolute hidden flex flex-col items-stretch text-center self-end p-6 mt-3 space-y-3 bg-white w-auto sm:self-center left-6 right-6 drop-shadow-md">
                 <a href="x" class="border-b-[1px] pb-3 border-gray-400">Home</a>
                 <a href="x" class="border-b-[1px] pb-3 border-gray-400">Recipes</a>
                 <a href="x" class="border-b-[1px] pb-3 border-gray-400">Restaurants</a>
@@ -71,8 +77,8 @@
         <!-- Flex Container -->
         <div class="container flex flex-col m-auto justify-center" id="hero-container">
             <!-- Hero Text-->
-            <div class="flex flex-col space-y-4 items-center p-6 justify-around md:space-y-8">
-                <h1 class="text-3xl font-bold text-center md:text-5xl">
+            <div class="flex flex-col space-y-4 items-center p-6 justify-around md:space-y-6">
+                <h1 class="text-4xl font-bold text-darkGray text-center md:text-7xl">
                     Hey there, foodie!
                 </h1>
                 <p class="text-center md:text-lg">

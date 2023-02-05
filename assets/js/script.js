@@ -13,6 +13,7 @@ $(document).ready(function () {
     var submitBtnMealEl = $("#meal-btn");
     var mealEl = $("#meal");
     var saveBtnEl = $(".save-recipe-btn")
+    var shopBtnEl = $(".save-shopping-btn");
 
     // ***************
     // DISPLAY RECIPES
@@ -89,12 +90,48 @@ $(document).ready(function () {
     // SAVE ALL INGREDIENTS TO SHOPPING LIST
     // *************************************
 
+    function toShoppingList(data) {
+        var recipeIdShop = data
+
+        // An empty array is created first
+        var ingredientsSavedAll = []
+
+        // If local storage is NOT empty, the existing data is added to the ingredientsSavedAll array
+        var alreadyInStorageAll = localStorage.getItem("ingredient");
+        if (alreadyInStorageAll !== null) {
+            ingredientsSavedAll = JSON.parse(alreadyInStorageAll);
+        }
+
+        var spoonacularUrlId = "https://api.spoonacular.com/recipes/" + recipeIdShop + "/information?&apiKey=34486790fc234b2daa001d801bc76511"
+
+        fetch(spoonacularUrlId)
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (data) {
+                // For every new ingredient needed to be saved, check if it already exists in local storage
+                for (var i = 0; i < data.extendedIngredients.length; i++) {
+                    if (!ingredientsSavedAll.includes(data.extendedIngredients[i].name)) {
+                        ingredientsSavedAll.push(data.extendedIngredients[i].name);
+                    }
+                }
+                localStorage.setItem("ingredient", JSON.stringify(ingredientsSavedAll));
+            })
+    }
+
+
+
+    shopBtnEl.on("click", function (event) {
+        var idShop = $(this).parents().attr("data-id");
+        toShoppingList(idShop);
+    })
+
     // *************************
     // SAVE RECIPE TO FAVOURITES
     // *************************
 
     function saveRecipe(data) {
-        var recipeId = data
+        var recipeIdSave = data
 
         // An empty array is created first
         var recipeSaved = [];
@@ -106,14 +143,14 @@ $(document).ready(function () {
         }
 
         // The new recipe Id is added to the recipeSaved array
-        recipeSaved.push(recipeId);
+        recipeSaved.push(recipeIdSave);
         // recipeSaved is added to local storage with a key of "recipe"
         localStorage.setItem("recipe", JSON.stringify(recipeSaved));
     }
 
-    saveBtnEl.on("click", function(event) {
-        var id = $(this).parents().attr("data-id");
-        saveRecipe(id);
+    saveBtnEl.on("click", function (event) {
+        var idSave = $(this).parents().attr("data-id");
+        saveRecipe(idSave);
     })
 
 
@@ -251,5 +288,5 @@ $(document).ready(function () {
             })
     })
 
- 
+
 });

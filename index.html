@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Search by ingredient -->
     <h2>Please choose at least one ingredient:</h2>
     <form action="/action_page.php" method="get">
         <label for="meats">Choose a type of meat/fish:</label>
@@ -94,6 +95,7 @@
         <button id="ingredients-btn" name="ingredients" type="submit">Submit</button>
     </form>
 
+    <!-- Search by cuisine -->
     <h2>Choose a type of cuisine:</h2>
     <form action="/action_page.php" method="get">
         <label for="cuisine">Choose a cuisine:</label>
@@ -123,6 +125,7 @@
         <button id="cuisine-btn" name="cuisine" type="submit">Submit</button>
     </form>
 
+    <!-- Search by type of meal -->
     <h2>Choose a type of meal:</h2>
     <form action="/action_page.php" method="get">
         <label for="meal">Choose a type of meal:</label>
@@ -143,6 +146,7 @@
         <button id="meal-btn" name="meal" type="submit">Submit</button>
     </form>
 
+    <!-- Recipe display (hidden by default) -->
     <section id="recipe-display" hidden>
         <div id="recipe1">
             <h2 id="recipe-heading1">Recipe title</h2>
@@ -175,6 +179,16 @@
             <button class="save-shopping-btn">Add all ingredients to your shopping list</button>
         </div>
     </section>
+
+    <!-- Add ingredients one by one to the shopping list -->
+    <div id="shopping-list">
+        <form>
+            <label for="ingredients">Enter your ingredients:</label>
+            <input type="text" id="ingredients-input" name="ingredients">
+            <input type="save" value="save" id="save-btn">
+        </form>
+        <a href="shopping-list.html"><button id="view-list">View Your Shopping List</button></a>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>

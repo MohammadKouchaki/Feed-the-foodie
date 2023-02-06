@@ -1,32 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Shopping List</title>
 </head>
-<body>
-    <header>
 
-    </header>
+<body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6 min-w-full">
+        <!-- Flex Container -->
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div>
+                <img src="./assets/images/Logo.png" class="h-10" alt="Company Logo">
+            </div>
+            <!-- Menu Items -->
+            <div class="hidden md:flex space-x-6">
+                <a href="x" class="hover:text-darkOrange">Home</a>
+                <a href="x" class="hover:text-darkOrange">Recipes</a>
+                <a href="x" class="hover:text-darkOrange">Restaurants</a>
+                <a href="x" class="hover:text-darkOrange">My Favourites</a>
+                <a href="x" class="hover:text-darkOrange">Shopping List</a>
+            </div>
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="block hamburger md:hidden">
+                <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+                <i id="xmark" class="fa-solid fa-xmark text-2xl hidden"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <div id="menu"
+                class="absolute hidden flex flex-col items-stretch text-center self-end p-6 mt-3 space-y-3 bg-white w-auto sm:self-center left-6 right-6 drop-shadow-md">
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Home</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Recipes</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Restaurants</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">My Favourites</a>
+                <a href="x">Shopping List</a>
+            </div>
+        </div>
+    </nav>
+
     <main class="container mx-auto text-center">
         <div class="m-8">
             <h1>Your Shopping List</h1>
         </div>
-        <div class="my-6">  
+        <div class="my-6">
             <ul id="ingredients-list"></ul>
         </div>
         <div class="space-x-4">
-            <a href="sample.html"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go Back</button></a>
-            <button id="clear-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Clear Your Shopping List</button>
-            <button id="print-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Print Your Shopping List</button>
+            <a href="sample.html"><button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go Back</button></a>
+            <button id="clear-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Clear
+                Your Shopping List</button>
+            <button id="print-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Print
+                Your Shopping List</button>
         </div>
     </main>
 
+    <!-- Footer Section-->
+    <footer class="bg-lightGray">
+        <!-- Flex Container -->
+        <div class="container flex flex-col space-y-3 p-3 min-w-full">
+            <div class="flex space-x-8 justify-center text-center">
+                <a href="https://www.facebook.com">
+                    <i class="fab fa-facebook-f text-lg text-darkGray hover:text-black"></i></a>
+                <a href="https://twitter.com">
+                    <i class="fab fa-twitter text-lg text-darkGray hover:text-black"></i>
+                </a>
+                <a href="https://instagram.com">
+                    <i class="fab fa-instagram text-lg text-darkGray hover:text-black"></i>
+                </a>
+                <a href="https://www.linkedin.com">
+                    <i class="fab fa-linkedin-in text-lg text-darkGray hover:text-black"></i>
+                </a>
+            </div>
+            <div>
+                <p class="flex justify-center text-sm">© 2023 by Feed The Foodie</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px'
+                },
+                extend: {
+                    colors: {
+                        lightOrange: '#f79970',
+                        darkOrange: '#f57f4c',
+                        lightGreen: '#819d69',
+                        darkGreen: '#628444',
+                        lightGray: '#f6f4f5',
+                        darkGray: '#424242',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/js/shopping-list.js"></script>
 </body>
+
 </html>

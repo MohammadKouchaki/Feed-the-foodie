@@ -1,47 +1,32 @@
 $(document).ready(function () {
+    var menuBtn = document.getElementById('menu-button');
+    var menu = document.getElementById('menu');
+    var barsIcon = document.getElementById('bars');
+    var xmarkIcon = document.getElementById('xmark');
+
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        barsIcon.classList.toggle('hidden');
+        xmarkIcon.classList.toggle('hidden');
+    })
+
+
     function displayRecipe(data) {
         // The contents of this div are dynamically created with JS
         var html =
-            '<article class="overflow-hidden rounded-lg shadow-lg">' 
-            
-            +
-
-            '<img alt="Photo of a recipe" class="block h-auto w-full" id="recipe-img-' + data.id + '>' 
-            
-            +
-
-            '<div class="flex items-center justify-between leading-tight p-2 md:p-4">'
-            
-            +  
-            
-            '<h1 class="text-lg" id="recipe-heading-' + data.id + '>Recipe Title</h1>'
-
-            +
-
-            '</div>'
-           
-            +
-
-            '<div class="flex items-center justify-between leading-none p-2 md:p-4">'
-
-            +
-
-            '<a id="recipe-link-' + data.id + '" class="flex items-center no-underline px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"          href="#" target="_blank">Link to the recipe<svg aria-hidden="true"           class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"            xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd"              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"           clip-rule="evenodd"></path></svg></a>'                    
-            
-            +
-
-            '<a data-meal=' + data.id + ' id="delete-recipe-' + data.id + '"               class="no-underline text-grey-darker hover:text-red-darkdelete-btn inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Delete this recipe</a>'
-
-            +
-
-            '</div></article>'
+            `<div data-meal="${data.id}" class="p-6 flex flex-col items-stretch space-y-6 md:w-1/2 lg:w-1/3">
+                <a id="recipe-link-${data.id}" href="#" class="flex flex-col-reverse items-stretch text-left h-64 bg-[url(${data.image})] bg-center bg-no-repeat bg-cover">
+                    <div class="recipe-title p-3 text-lg">
+                        <h3 id="recipe-heading-${data.id}"></h3>
+                    </div>
+                </a>
+                <button class="delete-btn p-2 w-20 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"><i class="fa-solid fa-trash-can"></i></button>
+            </div>`
 
 
         // The html variable is added to the div created in HTML
         $("#fav-recipes-container").append(html);
-
         $("#recipe-heading-" + data.id).text(data.title);
-        $("#recipe-img-" + data.id).attr("src", data.image);
         $("#recipe-link-" + data.idMeal).attr("href", data.sourceUrl);
     }
 

@@ -14,15 +14,18 @@ $(document).ready(function () {
     function displayRecipe(data) {
         // The contents of this div are dynamically created with JS
         var html =
-            `<div data-meal="${data.id}" class="p-6 flex flex-col items-stretch space-y-6 md:w-1/2 lg:w-1/3">
-                <a id="recipe-link-${data.id}" href="#" class="flex flex-col-reverse items-stretch text-left h-64 bg-[url(${data.image})] bg-center bg-no-repeat bg-cover">
-                    <div class="recipe-title p-3 text-lg">
-                        <h3 id="recipe-heading-${data.id}"></h3>
+            `<div data-meal="${data.id}" class="p-6 flex flex-col items-stretch space-y-6 md:w-1/2 lg:w-1/3"
+                <div class="card bg-lightGray rounded-3xl drop-shadow-md">
+                    <a id="recipe-link-${data.id}" href="#" target="_blank" class="class="flex flex-col-reverse items-stretch text-left h-64 rounded-t-3xl bg-[url(${data.image})] bg-center bg-no-repeat bg-cover">
+                        <div class="recipe-title p-3 text-lg">
+                            <h3 id="recipe-heading-${data.id}"></h3>
+                        </div>
+                    </a>
+                    <div class="p-6">
+                        <button class="p-2 w-20 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
-                </a>
-                <button class="delete-btn p-2 w-20 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
             </div>`
-
 
         // The html variable is added to the div created in HTML
         $("#fav-recipes-container").append(html);
@@ -70,7 +73,6 @@ $(document).ready(function () {
                 })
                 .then(function (data) {
                     displayRecipe(data);
-                    console.log(data);
                 })
         }
     }

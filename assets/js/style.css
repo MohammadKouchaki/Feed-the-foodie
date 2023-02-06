@@ -1,0 +1,48 @@
+*,*::before,*::after{
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    display: flex;
+}
+
+
+
+#main{
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    border: 2px solid green;
+
+}
+#aside{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    width:15vw;
+    justify-content: space-between;
+    border: 2px solid black;
+}
+#img-container{
+    display: flex;
+    flex-direction: row;
+    width: 27%;
+    flex-wrap: nowrap;
+    
+}
+#info, #description{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+}
+#form{
+    position: absolute;
+    margin:150px 5px 0 5px;
+}
+#map{
+    position: absolute;
+    margin: 30px 5px 0 5px;
+}

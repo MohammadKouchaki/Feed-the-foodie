@@ -1,18 +1,28 @@
 var searchEl = document.getElementById("search");
-var photosEl = document.getElementById("photos");
+var photosElOne = document.getElementById("photos-1");
+var photosElTwo = document.getElementById("photos-2");
+var photosElThree = document.getElementById("photos-3");
 var distanceEl = document.getElementById("distance");
 var cuisineEl = document.getElementById("cuisine");
 var cityEl = document.getElementById("city");
-var mapEl = document.querySelector(".map");
-var buttonEl = document.querySelector(".button");
-var imageEl = document.getElementById("image");
-var locationEl = document.getElementById("location");
+var mapElOne = document.querySelector(".map-1");
+var mapElTwo = document.querySelector(".map-2");
+var mapElThree = document.querySelector(".map-3");
+var buttonElOne = document.querySelector(".button-1");
+var buttonElTwo = document.querySelector(".button-2");
+var buttonElThree = document.querySelector(".button-3");
+var imageElOne = document.getElementById("image-1");
+var imageElTwo = document.getElementById("image-2");
+var imageElThree = document.getElementById("image-3");
+var locationElOne = document.getElementById("location-1");
+var locationElTwo = document.getElementById("location-2");
+var locationElThree = document.getElementById("location-3");
+var ratingImageOne = document.getElementById("rating-img-1");
+var ratingImageTwo = document.getElementById("rating-img-2");
+var ratingImageThree = document.getElementById("rating-img-3");
 
 
-
-
-
-//function to get lat and long of the city
+//function to get lat and long of the selected city
 var latLong = 'http://api.openweathermap.org/geo/1.0/direct?q=amsterdam&limit=5&appid=7d1b285353ccacd5326159e04cfab063'
 
 fetch(latLong)
@@ -37,27 +47,31 @@ fetch(advisorUrl)
     })
     .then(function (data) {
         for (i = 0; i < data.length; i++) {
-            var local_id = localStorage.setItem('locationId[i]', data.data[i].location_id * 1);
+            var location_id = localStorage.setItem('locationId[i]', data.data[i].location_id * 1);
             console.log(data);//data includes city and distance
 
         }
     })
 
-//function to get the detail for the restaurant based on the location id
+//function to get the detail for the restaurant based on the location id fetched in the previous step
 function renderInfo() {
-    var locationId = JSON.parse(localStorage.getItem(locationId[i] * 1))
-    var queryUrl = 'https://cors-anywhere.herokuapp.com/https://api.content.tripadvisor.com/api/v1/location/' + locationId[i] + '/photos?key=' + APIkey1 + '&language=en'
-
+    food = ""
+    city = ""
+    radius = ""
+    for (i = 0; i < data.length; i++) {
+        var locationId = JSON.parse(localStorage.getItem(locationId[i] * 1))
+        var queryUrl = 'https://cors-anywhere.herokuapp.com/https://api.content.tripadvisor.com/api/v1/location/' + locationId[i] + '/photos?key=' + APIkey1 + '&language=en'
+    }
     fetch(queryUrl)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             for (i = 0; i < data.length; i++) {
-                var images = localStorage.setItem("image[i]", JSON.srtingify(data.see_all_phtos[i]));
-                var address = localStorage.setItem("address[i]", JSON.stringify(data.data.address[i]));
-                var ratingImg = localStorage.setItem("ratingImg[i]", JSON.stringify(data.rating_image_url[i]));
-                var rating = localStorage.setItem("rating[i]", JSON.stringify(data.rating[i]));
+                localStorage.setItem("image[i]", JSON.srtingify(data.see_all_phtos[i]));
+                localStorage.setItem("address[i]", JSON.stringify(data.data.address[i]));
+                localStorage.setItem("ratingImg[i]", JSON.stringify(data.rating_image_url[i]));
+                localStorage.setItem("rating[i]", JSON.stringify(data.rating[i]));
                 var contact = localStorage.setItem("phone[i]", JSON.stringify(data.phone[i]));
                 var url = localStorage.setItem("website[i]", JSON.stringify(data.data.website[i]));
                 var price = localStorage.setItem("price[i]", JSON.stringify(data.price[i]));
@@ -67,11 +81,10 @@ function renderInfo() {
 
     function infoText() {
         for (i = 0; i < data.length; i++) {
-            JASON.parse(localStorage.getItem(image[i]));
+            var images = JASON.parse(localStorage.getItem(image[i]));
             imageEl[i].setAttribute('src', images[i]);
-            JASON.parse(localStorage.getItem(address[i]));
-            addressEl[i].textContent = JASON.parse(localStorage.getItem('address[i]'));
-            JASON.parse(localStorage.getItem(ratingImage[i]))
+            addressEl[i].textContent = JASON.parse(localStorage.getItem(address[i]));
+            var ratingImg = JASON.parse(localStorage.getItem(ratingImage[i]))
             ratingEl[i].setAttribute('src', ratingImage[i]);
             ratingNum[i].textContent = JASON.parse(localStorage.getItem(rating[i]));
             contactEl[i].textContent = JASON.parse(localStorage.getItem(phone[i]));
@@ -81,12 +94,6 @@ function renderInfo() {
     }
 
 
-    // if (data.cuisine.localized_names !== "null") {
-    // photosEl.setAttribute("src", "data.original.url")
-    // } else {
-    // alert("please choose a food couisine!")
-    // }
-    // renderPicture();
 }
 
 
@@ -104,45 +111,36 @@ function renderMap() {
         })
 }
 
+searchEl.addEventListener("click", function (event) {
+    event.preventDefault()
+    var food = cuisineEl.value;
+    var city = cityEl.value;
+    var radius = distanceEl.value;
+    if (food === " " || city === " " || radius === " ") {
+        alert('Please Enter A valid Input!')
+    } else {
+        localStorage.setItem('food', food);
+        localStorage.setItem('city', city);
+        localStorage.setItem('radius', radius);
+        renderInfo();
+        textInfo();
+        initMap();
+    }
+});
+
+//This renders the map for three restaurants
 var map;
 function initMap() {
-    var lat = localStorage.getItem('lat');
-    var long = localStorage.getItem('long');
-    map = new google.maps.Map(document.querySelector(".map-1"), {
-        center: { lat: lat * 1, lng: long * 1 },
-        zoom: 8,
-
-    });
-
+    for (i = 0; i < 4; i++) {
+        var lat = localStorage.getItem('lat');
+        var long = localStorage.getItem('long');
+        map = new google.maps.Map(document.querySelector(".map-[i]"), {
+            center: { lat: lat * 1, lng: long * 1 },
+            zoom: 8,
+        });
+    }
 }
 window.initMap = initMap;
-
-
-
-
-/*searchEl.addEventListener("click", function (event) {
-    event.preventDefault()
-var food = cuisineEl.value;
-var city = cityEl.value;
-var radius = distanceEl.value;
-if(food === nul || city === null || radius === null){
-    alert(Please Enter A valid Input!)
-}else{
-    localStorage.setItem('food',food);
-    localSorage.setItem('city',city);
-    localStorage.setItem('radius',radius);
-    renderInfo();
-    chooseRestaurant();
-    initMap();
-}});
-
-photosEl.addEventListener("click", function (event) {
-    event.stopPropagation();
-    
-    photosEl.setAttribute("src", "https:/");//to be completed
-    photosEl.setAttribute("href", "_blank");
-
-})*/
 
 
 

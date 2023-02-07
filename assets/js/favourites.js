@@ -22,7 +22,7 @@ $(document).ready(function () {
                         </div>
                     </a>
                     <div class="p-6">
-                        <button class="p-2 w-20 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"><i class="fa-solid fa-trash-can"></i></button>
+                        <button data-meal="${data.id}" class="delete-btn p-2 w-20 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"><i data-meal="${data.id}" class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
             </div>`
@@ -35,20 +35,21 @@ $(document).ready(function () {
 
     // Event listener for the delete recipe button
     $(document).on("click", ".delete-btn", function (event) {
-        var recipeDeleted = $(this).attr("data-meal");
+        var recipeDeleted = $(event.target).data("meal"); 
         var recipeStored = JSON.parse(localStorage.getItem("recipe"));
         // Create a new array to be saved to local storage
         var newRecipeStored = []
 
         // Loop through every item in local storage, if the recipe in storage does NOT match the recipe being deleted, add it to the new array
         for (var i = 0; i < recipeStored.length; i++) {
-            if (recipeDeleted !== recipeStored[i]) {
+            if (recipeDeleted !== parseInt(recipeStored[i])) {
                 newRecipeStored.push(recipeStored[i]);
+                console.log(typeof recipeDeleted);
+                console.log(typeof recipeStored[i]);
             }
         }
         // The new array gets saved to local storage
         localStorage.setItem("recipe", JSON.stringify(newRecipeStored));
-        location.reload();
     })
 
 
@@ -64,17 +65,19 @@ $(document).ready(function () {
             return;
         }
 
+        var urlWithId
 
-        // For as many IDs as are saved to local storage fetch the API based on the specific ID saved and display it to the screen
-        for (var i = 0; i < recipeId.length; i++) {
-            fetch("https://api.spoonacular.com/recipes/" + recipeId[i] + "/information?&apiKey=34486790fc234b2daa001d801bc76511")
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    displayRecipe(data);
-                })
-        }
+        // // For as many IDs as are saved to local storage fetch the API based on the specific ID saved and display it to the screen
+        // for (var i = 0; i < recipeId.length; i++) {
+        //     urlWithId = "https://api.spoonacular.com/recipes/" + recipeId[i] + "/information?&apiKey=34486790fc234b2daa001d801bc76511"
+        //     fetch(urlWithId)
+        //         .then(function (response) {
+        //             return response.json();
+        //         })
+        //         .then(function (data) {
+        //             displayRecipe(data);
+        //         })
+        // }
     }
 
     init();

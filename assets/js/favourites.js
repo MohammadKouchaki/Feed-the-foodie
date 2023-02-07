@@ -169,6 +169,7 @@ $(document).ready(function () {
     // Init function
 
     function init() {
+        savedRecipes();
         savedRestaurants();
     }
 

@@ -15,7 +15,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="relative container mx-auto p-6 min-w-full">
+    <nav class="relative container mx-auto p-6 min-w-full border-solid border-b border-gray-400">
         <!-- Flex Container -->
         <div class="flex items-center justify-between">
             <!-- Logo -->
@@ -49,42 +49,44 @@
         </div>
     </nav>
 
-    <main class="container mx-auto text-center">
-        <div class="m-8">
+    <main>
+        <div>
             <h1>Your Shopping List</h1>
         </div>
-        <div class="my-6">
+        <form>
+            <label for="ingredients">Add to your shopping list</label>
+            <input type="text" id="ingredients-input" name="ingredients">
+            <input type="submit" value="Submit" id="submit-btn">
+        </form>
+        <div>
             <ul id="ingredients-list"></ul>
         </div>
-        <div class="space-x-4">
-            <a href="sample.html"><button
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go Back</button></a>
-            <button id="clear-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Clear
-                Your Shopping List</button>
-            <button id="print-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Print
-                Your Shopping List</button>
+        <div>
+            <a href="#"><button>Go Back</button></a>
+            <button id="clear-btn">Clear Your Shopping List</button>
+            <button id="print-btn">Print Your Shopping List</button>
         </div>
     </main>
 
     <!-- Footer Section-->
-    <footer class="bg-lightGray">
+    <footer class="bg-darkGray">
         <!-- Flex Container -->
         <div class="container flex flex-col space-y-3 p-3 min-w-full">
             <div class="flex space-x-8 justify-center text-center">
-                <a href="https://www.facebook.com">
-                    <i class="fab fa-facebook-f text-lg text-darkGray hover:text-black"></i></a>
-                <a href="https://twitter.com">
-                    <i class="fab fa-twitter text-lg text-darkGray hover:text-black"></i>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook-f text-lg text-white hover:text-lightOrange"></i></a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter text-lg text-white hover:text-lightOrange"></i>
                 </a>
-                <a href="https://instagram.com">
-                    <i class="fab fa-instagram text-lg text-darkGray hover:text-black"></i>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram text-lg text-white hover:text-lightOrange"></i>
                 </a>
-                <a href="https://www.linkedin.com">
-                    <i class="fab fa-linkedin-in text-lg text-darkGray hover:text-black"></i>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <i class="fab fa-linkedin-in text-lg text-white hover:text-lightOrange"></i>
                 </a>
             </div>
             <div>
-                <p class="flex justify-center text-sm">© 2023 by Feed The Foodie</p>
+                <p class="flex justify-center text-sm text-white">© 2023 by Feed The Foodie</p>
             </div>
         </div>
     </footer>
@@ -103,6 +105,7 @@
                     colors: {
                         lightOrange: '#f79970',
                         darkOrange: '#f57f4c',
+                        veryLightGreen: '#cdd8c3',
                         lightGreen: '#819d69',
                         darkGreen: '#628444',
                         lightGray: '#f6f4f5',

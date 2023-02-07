@@ -1,9 +1,9 @@
-// ******************
-// SHOPPING-LIST.HTML
-// ******************
-
-
 $(document).ready(function () {
+
+    // ******************
+    // STYLING FOR NAVBAR
+    // ******************
+
     var menuBtn = document.getElementById('menu-button');
     var menu = document.getElementById('menu');
     var barsIcon = document.getElementById('bars');
@@ -15,11 +15,51 @@ $(document).ready(function () {
         xmarkIcon.classList.toggle('hidden');
     })
 
-
-
     var clearBtnEl = $("#clear-btn");
     var listEl = $("#ingredients-list");
     var printEl = $("#print-btn");
+    var inputEl = $("#ingredients-input");
+    var submitBtnEl = $("#submit-btn")
+
+
+    // *************************
+    // ADD MORE TO SHOPPING LIST
+    // *************************
+
+    // Function to save new ingredients to local storage
+    function saveIngredient() {
+        // An empty array is created first
+        var ingredientsSavedOne = [];
+
+        // If local storage is NOT empty, the existing data is added to the ingredientsSavedOne array
+        var alreadyInStorageOne = localStorage.getItem("ingredient");
+        if (alreadyInStorageOne !== null) {
+            ingredientsSavedOne = JSON.parse(alreadyInStorageOne);
+        }
+
+        // If the input box is blank, the value will not be saved
+        if (inputEl.val().trim() === "") {
+            return
+        } else {
+            // The new ingredient is added to the ingredientsSavedOne array
+            ingredientsSavedOne.push(inputEl.val());
+            // ingredientsSavedOne is added to local storage with a key of "ingredient"
+            localStorage.setItem("ingredient", JSON.stringify(ingredientsSavedOne));
+        };
+    }
+
+
+    // Event listener for the submit button
+    submitBtnEl.on("click", function () {
+        saveIngredient();
+        listEl.append("<li><input type='checkbox'id='" + inputEl.val() + "'>  " + ingredientsSaved[i] + "</li>");
+        inputEl.val("");
+    });
+
+
+    // *********************
+    // DISPLAY SHOPPING LIST
+    // *********************
 
     // The following function renders items in a list as <li> elements
     function createList() {
@@ -41,7 +81,9 @@ $(document).ready(function () {
         window.print();
     })
 
-    // This function is being called below and will run when the page loads
+
+    // Init function
+
     function init() {
         // Retrieve the stored ingredients from localStorage
         var storedIngredients = JSON.parse(localStorage.getItem("ingredient"));

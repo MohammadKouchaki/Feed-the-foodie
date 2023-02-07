@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Selection</title>
+    <link rel="stylesheet" type="text/css" href="./assets/js/style.css" />
+    <script async defer src="./assets/js/restaurant.js" defer></script>
+</head>
+
+<body>
+    <div>
+        <form id="aside">
+            <div>
+                <lable>Select the type of food</lable>
+                <select id="cuisine">
+                    <option>Choose...</option>
+                    <option>Sea Food</option>
+                    <option>Steak</option>
+                    <option>Asian</option>
+                    <option>Indian</option>
+                    <option>Itailan</option>
+                    <option>Mexican</option>
+                    <option>Vegeterian</option>
+                </select>
+            </div>
+            <div>
+                <lable>Select your city</lable>
+                <input id="city" type="text" placeholder="City Name..."></input>
+            </div>
+            <div>
+                <lable>Distance from you</lable>
+                <input id="distance" placeholder="0"></input><span> KM</span>
+            </div>
+            <div>
+                <button id="search">SEARCH</button>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div id="main">
+        <div id="row-1">
+            <section class="place-1" style="height: 300px; width: 390px; margin:20px; border: 2px solid red;">
+                <span id="location-2">location</span><!---location is just a place holder fo now-->
+            </section>
+            <section class="info-1" style="height: 300px; width: 390px; margin:20px; border: 2px solid red;">
+                <section class="form-1">
+                    <h3>Rating :<span id="rate-1"></span><span id="rating-img-1"></span></h3>
+                    <h3>Price Level :<span class=price-1></span></h3>
+                    <h3>Website :<span id="web-1"><a class=url-1 href="#">URL</a></span></h3>
+                    <h3>Contact :<span id="contact-1"></span></h3>
+                    <h3>Address :</h3><span id="address-1"></span>
+                    <button class="button-1">Take me here!</button>
+                </section>
+            </section>
+            <section class="map-1" style="height: 300px; width: 390px; margin:20px; border: 2px solid red;">
+
+            </section>
+        </div>
+        <div id="row-2">
+            <section class="place-2" style="height: 300px; width: 390px; margin:20px; border: 2px solid green;">
+                <span id="location-2">location</span>
+            </section>
+
+            <section class="info-2" style="height: 300px; width: 390px; margin:20px; border: 2px solid green;">
+                <section id="form-2">
+                    <h3>Rating :<span id="rate-2"></span><span id="rating-img-2"></span></h3>
+                    <h3>Price Level :<span class=price-2></span></h3>
+                    <h3>Website :<span id="web-2"><a class=url-2 href="#">URL</a></span></h3>
+                    <h3>Contact :<span id="contact-2"></span></h3>
+                    <h3>Address :</h3><span id="address-2"></span>
+                    <button class="button-2">Take me here!</button>
+                </section>
+            </section>
+            <section class="map-2" style="height: 300px; width: 390px; margin:20px; border: 2px solid green;">
+            </section>
+        </div>
+        <div id="row-3">
+            <section class="place-3" style="height: 300px; width: 390px; margin:20px; border: 2px solid blue;">
+                <span id="location-3">location</span>
+            </section>
+            <section class="info-3" style="height: 300px; width: 390px; margin:20px; border: 2px solid blue;">
+                <section id="form-3">
+                    <h3>Rating :<span id="rate-3"></span><span id="rating-img-1"></span></h3>
+                    <h3>Price Level :<span class=price-3></span></h3>
+                    <h3>Website :<span id="web-3"><a class=url-3 href="#">URL</a></span></h3>
+                    <h3>Contact :<span id="contact-3"></span></h3>
+                    <h3>Address :</h3><span id="address-3"></span>
+                    <button class="button-3">Take me here!</button>
+                </section>
+            </section>
+            <section class="map-3" style="height: 300px; width: 390px; margin:20px; border: 2px solid blue;">
+            </section>
+        </div>
+
+    </div>
+    <script async defer src="./assets/js/restaurant.js" defer></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLiiiOP1OEJwlRD3d0NgaOc_-xHo10TB8&callback=initMap">
+        </script>
+</body>

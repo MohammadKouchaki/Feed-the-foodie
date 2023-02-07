@@ -14,7 +14,6 @@ $(document).ready(function () {
     var mealEl = $("#meal");
     var saveBtnEl = $(".save-recipe-btn")
     var shopBtnEl = $(".save-shopping-btn");
-    var saveBtnEl = $("#save-btn");
     var inputEl = $("#ingredients-input");
 
 
@@ -145,13 +144,18 @@ $(document).ready(function () {
             recipeSaved = JSON.parse(alreadyInStorage);
         }
 
-        // The new recipe Id is added to the recipeSaved array
-        recipeSaved.push(recipeIdSave);
-        // recipeSaved is added to local storage with a key of "recipe"
-        localStorage.setItem("recipe", JSON.stringify(recipeSaved));
+        // Check if the new recipe to be saved already exists in local storage
+        if (!recipeSaved.includes(recipeIdSave)) {
+            recipeSaved.push(recipeIdSave);
+            // recipeSaved is added to local storage with a key of "recipe"
+            localStorage.setItem("recipe", JSON.stringify(recipeSaved));
+        }
+
+
+
     }
 
-    saveBtnEl.on("click", function (event) {
+    saveBtnEl.on("click", function () {
         var idSave = $(this).parents().attr("data-id");
         saveRecipe(idSave);
     })
@@ -290,41 +294,5 @@ $(document).ready(function () {
                 getInfo(data.results);
             })
     })
-
-
-    // ********************************************
-    // SAVE INGREDIENTS ONE BY ONE TO SHOPPING LIST
-    // ********************************************
-
-    // Function to save new ingredients to local storage
-    function saveIngredient() {
-        // An empty array is created first
-        var ingredientsSavedOne = [];
-
-        // If local storage is NOT empty, the existing data is added to the ingredientsSavedOne array
-        var alreadyInStorageOne = localStorage.getItem("ingredient");
-        if (alreadyInStorageOne !== null) {
-            ingredientsSavedOne = JSON.parse(alreadyInStorageOne);
-        }
-
-        // If the input box is blank, the value will not be saved
-        if (inputEl.val().trim() === "") {
-            return
-        } else {
-            // The new ingredient is added to the ingredientsSavedOne array
-            ingredientsSavedOne.push(inputEl.val());
-            // ingredientsSavedOne is added to local storage with a key of "ingredient"
-            localStorage.setItem("ingredient", JSON.stringify(ingredientsSavedOne));
-        };
-    }
-
-
-    // Event listener for the submit button
-    saveBtnEl.on("click", function () {
-        $("#alert").remove();
-        saveIngredient();
-        listEl.append("<li><input type='checkbox'id='" + inputEl.val() + "'>  " + ingredientsSaved[i] + "</li>");
-        inputEl.val("");
-    });
 
 });

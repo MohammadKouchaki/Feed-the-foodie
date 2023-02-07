@@ -58,7 +58,7 @@ fetch(advisorUrl, {
             console.log(data);//data includes city and distance
 
         }
-    })
+    }))
 
 //function to get the detail for the restaurant based on the location id fetched in the previous step
 function renderInfo() {

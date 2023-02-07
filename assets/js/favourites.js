@@ -52,8 +52,6 @@ $(document).ready(function () {
         for (var i = 0; i < recipeStored.length; i++) {
             if (recipeDeleted !== parseInt(recipeStored[i])) {
                 newRecipeStored.push(recipeStored[i]);
-                console.log(typeof recipeDeleted);
-                console.log(typeof recipeStored[i]);
             }
         }
         // The new array gets saved to local storage
@@ -94,7 +92,7 @@ $(document).ready(function () {
     function displayRestaurant(data, photoData) {
         // The contents of this div are dynamically created with JS
         var htmlRest =
-            `<div data-meal="${data.location_id}" class="p-6 flex flex-col items-stretch space-y-6 md:w-1/2 lg:w-1/3">
+            `<div data-rest="${data.location_id}" class="p-6 flex flex-col items-stretch space-y-6 md:w-1/2 lg:w-1/3">
                 <div class="card bg-lightGray rounded-3xl drop-shadow-md">
                     <a id="restaurant-link-${data.location_id}" href="#" target="_blank"
                         class="flex flex-col-reverse items-stretch text-left h-64 rounded-t-3xl bg-[url('${photoData.data[0].images.medium.url}')] bg-center bg-no-repeat bg-cover ">
@@ -103,8 +101,8 @@ $(document).ready(function () {
                         </div>
                     </a>
                     <div class="p-6">
-                        <button data-meal="${data.location_id}" class="delete-btn-rest p-2 w-20 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange">
-                        <i data-meal="${data.location_id}" class="fa-solid fa-trash-can"></i></button>
+                        <button data-rest="${data.location_id}" class="delete-btn-rest p-2 w-20 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange">
+                        <i data-rest="${data.location_id}" class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
             </div>`
@@ -148,6 +146,27 @@ $(document).ready(function () {
                 })
         }
     }
+
+    // Event listener for the delete restauran button
+    $(document).on("click", ".delete-btn-rest", function(event) {
+        var restaurantDeleted = $(event.target).data("rest");
+        var restaurantStored = JSON.parse(localStorage.getItem("restaurant"));
+
+        //Create a new array to be saved to local storage
+        var newRestaurantStored = []
+
+        //Loop through every item in local storage, if the recipe in storage does NOT match the recipe being deleted, add it to the new array
+        for (var i = 0; i < restaurantStored.length; i++) {
+            if (restaurantDeleted !== parseInt(restaurantStored[i])) {
+                newRestaurantStored.push(restaurantStored[i]);
+            }
+        }
+        // The new array gets saved to local storage
+        localStorage.setItem("restaurant", JSON.stringify(newRestaurantStored));
+    })
+
+
+    // Init function
 
     function init() {
         savedRestaurants();

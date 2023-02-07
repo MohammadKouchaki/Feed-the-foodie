@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px'
+                },
+                extend: {
+                    colors: {
+                        lightOrange: '#f79970',
+                        darkOrange: '#f57f4c',
+                        veryLightGreen: '#cdd8c3',
+                        lightGreen: '#819d69',
+                        darkGreen: '#628444',
+                        lightGray: '#f6f4f5',
+                        darkGray: '#424242',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Recipes</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6 min-w-full border-solid border-b border-gray-400">
+        <!-- Flex Container -->
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div>
+                <img src="./assets/images/Logo.png" class="h-10" alt="Company Logo">
+            </div>
+            <!-- Menu Items -->
+            <div class="hidden md:flex space-x-6">
+                <a href="x" class="hover:text-darkOrange">Home</a>
+                <a href="x" class="hover:text-darkOrange">Recipes</a>
+                <a href="x" class="hover:text-darkOrange">Restaurants</a>
+                <a href="x" class="hover:text-darkOrange">My Favourites</a>
+                <a href="x" class="hover:text-darkOrange">Shopping List</a>
+            </div>
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="block hamburger md:hidden">
+                <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+                <i id="xmark" class="fa-solid fa-xmark text-2xl hidden"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <div id="menu"
+                class="absolute hidden flex flex-col items-stretch text-center self-end p-6 mt-3 space-y-3 bg-white w-auto sm:self-center left-6 right-6 drop-shadow-md">
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Home</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Recipes</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Restaurants</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">My Favourites</a>
+                <a href="x">Shopping List</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Intro Section-->
+    <section>
+        <div class="text-center p-4 mx-6 space-y-4 md:p-6 border-solid border-b border-gray-400 lg:mx-20">
+            <h1 class="text-4xl font-bold text-darkOrange md:text-7xl">Let's cook!</h1>
+            <p class="max-w-3xl mx-auto md:text-lg">Your future favourite recipe is just one click away! Browse and
+                search all the recipes on Feed The Foodie by selecting at least one of the options presented below.
+                You'll be matched with three amazingly delicious, easy-to-follow recipes. Bon appetit! </p>
+        </div>
+    </section>
+
+    <!-- Selection Section-->
+    <section>
+        <!-- Flex Container -->
+        <div class="flex flex-col items-stretch p-6 mx-auto text-center">
+            <div>
+                <h2
+                    class="text-2xl p-2 mb-6 text-darkGray font-bold bg-veryLightGreen rounded-md md:text-4xl md:p-4 lg:mx-16">
+                    Please select one search option</h2>
+            </div>
+
+            <!-- Ingredient Form -->
+            <div class="text-lg text-left mb-2 lg:mx-16">
+                <p>Ingredients:</p>
+            </div>
+            <form action="/action_page.php" method="get">
+                <div
+                    class="flex flex-col space-y-4 pb-4 border-solid border-b border-gray-400 md:flex-row md:space-y-0 md:space-x-6 md:pb-6 lg:mx-16">
+                    <select id="meats" name="meats" class="md:w-fit lg:w-1/5 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>MEAT AND FISH</option>
+                        <option value='anchovies'>Anchovies</option>
+                        <option value='clams'>Clams</option>
+                        <option value='mussels'>Mussels</option>
+                        <option value='salmon_fillet'>Salmon</option>
+                        <option value='raw_shrimp'>Shrimp</option>
+                        <option value='tuna'>Tuna</option>
+                        <option value='bacon'>Bacon</option>
+                        <option value='beef'>Beef</option>
+                        <option value='chicken'>Chicken</option>
+                        <option value='chorizo_sausage'>Chorizo</option>
+                        <option value='lamb'>Lamb</option>
+                        <option value='ground_beef'>Ground beef</option>
+                        <option value='pork'>Pork</option>
+                        <option value='sausage'>Sausages</option>
+                        <option value='ground_veal'>Veal</option>
+                    </select>
+                    <select id="vegetables" name="vegetables"
+                        class="md:w-fit lg:w-1/5 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>VEGETABLES</option>
+                        <option value='asparagus_spears'>Asparagus</option>
+                        <option value='avocado'>Avocado</option>
+                        <option value='broccoli'>Broccoli</option>
+                        <option value='butternut_squash'>Butternut squash</option>
+                        <option value='carrots'>Carrots</option>
+                        <option value='celery'>Celery</option>
+                        <option value="cauliflower">Cauliflower</option>
+                        <option value='cucumber'>Cucumber</option>
+                        <option value='eggplant'>Eggplant</option>
+                        <option value='fennel'>Fennel</option>
+                        <option value='garlic'>Garlic</option>
+                        <option value='jalapeno'>Jalapeño</option>
+                        <option value='kale'>Kale</option>
+                        <option value='lettuce'>Lettuce</option>
+                        <option value='mushroom'>Mushrooms</option>
+                        <option value='onion'>Onion</option>
+                        <option value='potatoes'>Potatoes</option>
+                        <option value='shallot'>Shallots</option>
+                        <option value='spinach'>Spinach</option>
+                        <option value='tomatoes'>Tomatoes</option>
+                    </select>
+                    <select id="fruits" name="fruits" class="md:w-1/5 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>FRUITS</option>
+                        <option value='apples'>Apples</option>
+                        <option value='apricot'>Apricot</option>
+                        <option value='banana'>Banana</option>
+                        <option value='blueberries'>Blueberries</option>
+                        <option value='lemon'>Lemon</option>
+                        <option value='lime'>Lime</option>
+                        <option value='orange'>Orange</option>
+                        <option value='peach'>Peaches</option>
+                        <option value='raisins'>Raisins</option>
+                        <option value='raspberries'>Raspberries</option>
+                        <option value='strawberries'>Strawberries</option>
+                    </select>
+                    <select id="others" name="others" class="md:w-1/5 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>OTHER</option>
+                        <option value='basmati_rice'>Basmati rice</option>
+                        <option value='black_beans'>Black beans</option>
+                        <option value='cannellini_beans'>Cannellini beans</option>
+                        <option value='cauliflower_rice'>Cauliflower rice</option>
+                        <option value='raw_cashews'>Cashews</option>
+                        <option value='chickpea'>Chickpeas</option>
+                        <option value='couscous'>Couscous</option>
+                        <option value='green_beans'>Green beans</option>
+                        <option value='canned_kidney_beans'>Kidney beans</option>
+                        <option value='red_lentils'>Lentils</option>
+                        <option value='pasta'>Pasta</option>
+                        <option value='peanuts'>Peanuts</option>
+                        <option value='peas'>Peas</option>
+                        <option value='pinto_beans'>Pinto beans</option>
+                        <option value='refried_beans'>Refried beans</option>
+                        <option value='rice'>Rice</option>
+                    </select>
+                    <button
+                        class="p-2 w-24 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"
+                        id="ingredients-btn" name="ingredients" type="submit">Search</button>
+                </div>
+            </form>
+
+            <!-- Cuisine Form -->
+            <div class="mt-4 text-lg text-left mb-2 lg:mx-16">
+                <p>Type of cuisine:</p>
+            </div>
+            <form action="/action_page.php" method="get">
+                <div
+                    class="flex flex-col space-y-4 pb-4 border-solid border-b border-gray-400 md:flex-row md:space-y-0 md:space-x-6 md:pb-6 lg:mx-16">
+                    <select id="cuisine" name="cuisine" class="md:w-1/3 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>CUISINE</option>
+                        <option value='American'>American</option>
+                        <option value='British'>British</option>
+                        <option value='Caribbean'>Caribbean</option>
+                        <option value='Chinese'>Chinese</option>
+                        <option value='French'>French</option>
+                        <option value='German'>German</option>
+                        <option value='Greek'>Greek</option>
+                        <option value='Indian'>Indian</option>
+                        <option value='Irish'>Irish</option>
+                        <option value='Italian'>Italian</option>
+                        <option value='Japanese'>Japanese</option>
+                        <option value='Korean'>Korean</option>
+                        <option value='Mediterranean'>Mediterranean</option>
+                        <option value='Mexican'>Mexican</option>
+                        <option value='Middle Eastern'>Middle Eastern</option>
+                        <option value='Spanish'>Spanish</option>
+                        <option value='Thai'>Thai</option>
+                        <option value='Vietnamese'>Vietnamese</option>
+                    </select>
+                    <button
+                        class="p-2 w-24 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"
+                        id="cuisine-btn" name="cuisine" type="submit">Search</button>
+                </div>
+            </form>
+
+            <!-- Course Form -->
+            <div class="mt-4 text-lg text-left mb-2 lg:mx-16">
+                <p>Type of meal:</p>
+            </div>
+            <form action="/action_page.php" method="get">
+                <div
+                    class="flex flex-col space-y-4 pb-4 border-solid border-b border-gray-400 md:flex-row md:space-y-0 md:space-x-6 md:pb-6 lg:mx-16">
+                    <select id="meal" name="meal" class="md:w-1/3 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>MEAL</option>
+                        <option value='appetizer'>appetizer</option>
+                        <option value='breakfast'>breakfast</option>
+                        <option value='dessert'>dessert</option>
+                        <option value='fingerfood'>fingerfood</option>
+                        <option value='main_course'>main course</option>
+                        <option value='salad'>salad</option>
+                        <option value='sauce'>sauce</option>
+                        <option value='snack'>snack</option>
+                        <option value='side_dish'>side dish</option>
+                        <option value='soup'>soup</option>
+                    </select>
+                    <button
+                        class="p-2 w-24 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"
+                        id="meal-btn" name="meal" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section id="recipe-display">
+        <!-- Flex Container -->
+        <div class="flex flex-col p-6 mx-auto text-center">
+            <!-- Recipe Card-->
+            <div id="recipe1"
+                class="flex flex-col items-stretch bg-lightGray rounded-3xl drop-shadow-md lg:w-4/5 lg:max-w-6xl lg:mx-auto">
+                <div class="flex flex-col md:flex-row">
+                    <div id="recipe-img1"
+                        class="flex flex-col items-stretch h-64 bg-[url('./assets/images/Garlic-Shrimp-Cannellini.webp')] bg-center bg-no-repeat bg-cover rounded-t-3xl md:w-1/3 md:h-auto md:rounded-t-none md:rounded-tl-3xl">
+                    </div>
+                    <div class="flex flex-col items-stretch px-6 md:w-2/3">
+                        <div
+                            class="text-2xl p-2 mt-6 mb-10 text-darkGray font-bold bg-veryLightGreen rounded-md md:text-3xl">
+                            <h2 id="recipe-heading1">Garlic Shrimp with Rosemary White Beans</h2>
+                        </div>
+                        <div class="text-lg pb-1 font-bold border-solid border-b border-gray-400">
+                            <h3 id="recipe-ingredients-heading1">INGREDIENTS</h3>
+                        </div>
+                        <div class="text-left pl-6 pt-6">
+                            <ul id="recipe-ingredients-list1" class="marker:text-darkOrange list-disc">
+                                <li>1 pound (500 g) jumbo (16-20) raw shrimp, peeled and deveined</li>
+                                <li>1 tablespoon crushed garlic</li>
+                                <li>1 red chili pepper, finely chopped</li>
+                                <li>½ -1 teaspoon dried chili flakes, to taste</li>
+                                <li>Kosher salt</li>
+                                <li>2 tablespoons (30 ml) olive oil</li>
+                                <li>1 tablespoon chopped parsley</li>
+                                <li>1 tablespoon chopped fresh rosemary</li>
+                                <li>1 15-ounce can (425 g) cannellini beans, drained</li>
+                                <li>½ cup (120 g) canned tomato puree or passata</li>
+                                <li>2 tablespoons (30 g) butter</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 id="recipe-instructions-heading1"
+                        class="pb-1 mt-10 mx-6 font-bold border-solid border-b border-gray-400">INSTRUCTIONS
+                    </h3>
+                    <p id="recipe-instructions1" class="text-left text-lg p-6">Toss the shrimp in a bowl with the
+                        garlic, fresh
+                        and dried chili, ½
+                        teaspoon salt and the olive
+                        oil. Place a medium (10-inch) skillet over medium high heat. When the pan is hot, add the shrimp
+                        mixture in one layer. Cook 1 minute; turn the shrimp over and toss in the herbs and cannellini.
+                        Stir in the tomato puree and ¼ cup water; bring to a simmer cook a few more minutes, until the
+                        shrimp are opaque and the sauce thickens slightly. Add the butter and swirl until it melts into
+                        the sauce. Taste for seasoning and add more salt if needed. Serve hot over cooked pasta or rice.
+                    </p>
+                </div>
+                <div
+                    class="flex flex-col p-6 bg-white space-y-4 rounded-b-3xl md:flex-row md:justify-center md:space md:space-y-0 md:space-x-12">
+                    <button
+                        class="save-recipe-btn mx-auto p-2 w-44 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange md:mx-0">Save
+                        Recipe</button>
+                    <button
+                        class="save-shopping-btn mx-auto p-2 w-44 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen md:mx-0">Add
+                        to Shopping List</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redirect to Restaurants -->
+    <section>
+        <!-- Flex Container -->
+        <div class="flex flex-col p-6 mt-12 mx-6 pt-12 text-center border-solid border-t border-gray-400 lg:mx-20">
+            <div class="flex">
+                <p class="max-w-3xl mx-auto md:text-lg">Didn't like the three presented recipes? Try changing your
+                    selection criteria and
+                    search again. If you no longer feel like cooking, visit our Restaurants page to look for eating out
+                    options.</p>
+            </div>
+            <div class="flex justify-center flex-col p-6 space-y-4 md:flex-row md:space-x-12 md:space-y-0">
+                <button
+                    class="p-2 w-44 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange md:mx-0">
+                    New Search</button>
+                <a href="#"
+                    class="p-2 w-44 mx-auto text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen md:mx-0">
+                    View Restaurants</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section-->
+    <footer class="bg-darkGray">
+        <!-- Flex Container -->
+        <div class="container flex flex-col space-y-3 p-3 min-w-full">
+            <div class="flex space-x-8 justify-center text-center">
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook-f text-lg text-white hover:text-lightOrange"></i></a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter text-lg text-white hover:text-lightOrange"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram text-lg text-white hover:text-lightOrange"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <i class="fab fa-linkedin-in text-lg text-white hover:text-lightOrange"></i>
+                </a>
+            </div>
+            <div>
+                <p class="flex justify-center text-sm text-white">© 2023 by Feed The Foodie</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>

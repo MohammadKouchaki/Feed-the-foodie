@@ -40,7 +40,7 @@ fetch(latLong)
 APIkey1 = "2D3652D5BC3F451F8D340C99078D1247";
 
 //var advisorUrl = 'https://cors-anywhere.herokuapp.com/https://api.content.tripadvisor.com/api/v1/location/search?key=' + APIkey1 + '&searchQuery=' + food + '&category=restaurant&latLong=' + lat+','+Long + '&radius=' + radius + '&radiusUnit=km&language=en'
-var advisorUrl = 'https://cors-anywhere.herokuapp.com/https://api.content.tripadvisor.com/api/v1/location/search?key=' + APIkey1 + '&searchQuery=seafood&category=restaurant&latLong=42.381027,-71.08678&radius=50&radiusUnit=km&language=en'
+var advisorUrl = 'https://api.content.tripadvisor.com/api/v1/location/search?key=' + APIkey1 + '&searchQuery=seafood&category=restaurant&latLong=42.381027,-71.08678&radius=50&radiusUnit=km&language=en'
 fetch(advisorUrl)
     .then(function (response) {
         return response.json();

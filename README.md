@@ -2,11 +2,19 @@
 
 ## Description
 
+We have created a website that helps the user come up with recipe ideas but also suggests nearby restaurants that would match the cuisine they're interested in. 
+
+The application helps people find recipes they hadn't thought of before or restaurants they didn't know about. 
+
 ## Screenshots
 
 ## Deployment
 
 ## Credits
+
+## Project Proposal
+
+[Here](https://docs.google.com/document/d/1AQT4OEH4UhSiaxFsiAVgNsJgzWs-vwxX/edit?usp=share_link&ouid=102341349698427392931&rtpof=true&sd=true) is a link to view our initial project proposal 
 
 ## License
 

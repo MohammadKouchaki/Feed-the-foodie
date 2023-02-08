@@ -7,9 +7,6 @@ h2 {
     font-family: 'Amatic SC', cursive;
 }
 
-#page-title {
-    background-color: rgba(129, 157, 105, .5);
-}
 .hamburger {
     cursor: pointer;
     transition: all 0.25s;

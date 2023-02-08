@@ -41,10 +41,12 @@ $(document).ready(function () {
         if (inputEl.val().trim() === "") {
             return
         } else {
-            // The new ingredient is added to the ingredientsSavedOne array
-            ingredientsSavedOne.push(inputEl.val());
-            // ingredientsSavedOne is added to local storage with a key of "ingredient"
-            localStorage.setItem("ingredient", JSON.stringify(ingredientsSavedOne));
+            if (!ingredientsSavedOne.includes(inputEl.val())) {
+                // The new ingredient is added to the ingredientsSavedOne array
+                ingredientsSavedOne.push(inputEl.val());
+                // ingredientsSavedOne is added to local storage with a key of "ingredient"
+                localStorage.setItem("ingredient", JSON.stringify(ingredientsSavedOne));
+            }
         };
     }
 
@@ -52,7 +54,7 @@ $(document).ready(function () {
     // Event listener for the submit button
     submitBtnEl.on("click", function () {
         saveIngredient();
-        listEl.append("<li><input type='checkbox'id='" + inputEl.val() + "'>  " + ingredientsSaved[i] + "</li>");
+        listEl.append("<li><input type='checkbox' class='mr-3' id='" + inputEl.val() + "'>  " + ingredientsSaved[i] + "</li>");
         inputEl.val("");
     });
 
@@ -66,7 +68,7 @@ $(document).ready(function () {
         var ingredientsSaved = JSON.parse(localStorage.getItem("ingredient"));
         // Render a new li for each score
         for (var i = 0; i < ingredientsSaved.length; i++) {
-            listEl.append("<li><input type='checkbox'id='" + ingredientsSaved[i] + "'>  " + ingredientsSaved[i] + "</li>");
+            listEl.append("<li><input type='checkbox' class='mr-3' id='" + ingredientsSaved[i] + "'>  " + ingredientsSaved[i] + "</li>");
         }
     }
 
@@ -81,7 +83,7 @@ $(document).ready(function () {
         window.print();
     })
 
-
+    
     // Init function
 
     function init() {

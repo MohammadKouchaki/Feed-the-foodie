@@ -5,6 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px'
+                },
+                extend: {
+                    colors: {
+                        lightOrange: '#f79970',
+                        darkOrange: '#f57f4c',
+                        veryLightGreen: '#cdd8c3',
+                        lightGreen: '#819d69',
+                        darkGreen: '#628444',
+                        lightGray: '#f6f4f5',
+                        darkGray: '#424242',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap"
@@ -49,22 +74,33 @@
         </div>
     </nav>
 
-    <main>
+    <!-- Shopping List Section-->
+    <main class="flex flex-col p-6 mx-auto text-center min-h-screen">
         <div>
-            <h1>Your Shopping List</h1>
+            <h1
+                class="text-4xl pb-6 font-bold text-darkOrange border-solid border-b border-gray-400 md:text-7xl md:mx-16 lg:w-3/5 lg:mx-auto">
+                Your Shopping List</h1>
         </div>
-        <form>
-            <label for="ingredients">Add to your shopping list</label>
-            <input type="text" id="ingredients-input" name="ingredients">
-            <input type="submit" value="Submit" id="submit-btn">
+        <form
+            class="flex flex-col mt-12 mb-6 space-y-4 pb-4 md:flex-row md:justify-center md:space-y-0 md:space-x-6 md:pb-6 lg:mx-24">
+            <input
+                class="rounded p-2 ring-1 ring-gray-400 focus:outline-none focus:ring-darkGreen focus:ring-2 md:w-3/5"
+                type="text" id="ingredients-input" name="ingredients" placeholder="ADD SHOPPING LIST ITEM">
+            <button
+                class="justify-items-right p-2 w-24 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"
+                type="submit" value="Submit" id="submit-btn">Add Item</button>
         </form>
-        <div>
-            <ul id="ingredients-list"></ul>
+        <div class="flex flex-col items-stretch bg-lightGray rounded-3xl drop-shadow-md md:w-4/5 md:mx-auto lg:w-3/5">
+            <ul id="ingredients-list" class="text-left p-6 space-y-3 md:text-md"></ul>
         </div>
-        <div>
-            <a href="#"><button>Go Back</button></a>
-            <button id="clear-btn">Clear Your Shopping List</button>
-            <button id="print-btn">Print Your Shopping List</button>
+        <div
+            class="flex flex-col p-6 bg-white space-y-4 rounded-b-3xl md:flex-row md:justify-center md:space md:space-y-0 md:space-x-12">
+            <button id="clear-btn"
+                class="mx-auto p-2 w-44 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange md:mx-0">Clear
+                Shopping List</button>
+            <button id="print-btn"
+                class="mx-auto p-2 w-44 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen md:mx-0">Print
+                Shopping List</button>
         </div>
     </main>
 
@@ -91,31 +127,6 @@
         </div>
     </footer>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                screens: {
-                    sm: '480px',
-                    md: '768px',
-                    lg: '976px',
-                    xl: '1440px'
-                },
-                extend: {
-                    colors: {
-                        lightOrange: '#f79970',
-                        darkOrange: '#f57f4c',
-                        veryLightGreen: '#cdd8c3',
-                        lightGreen: '#819d69',
-                        darkGreen: '#628444',
-                        lightGray: '#f6f4f5',
-                        darkGray: '#424242',
-                    }
-                }
-            }
-        }
-    </script>
-    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/js/shopping-list.js"></script>
 </body>

@@ -31,6 +31,7 @@ $(document).ready(function () {
         $("#recipe-heading1").text(data[0].title)
         $("#recipe-img1").attr("class", `flex flex-col items-stretch h-64 bg-[url('${data[0].image}')] bg-center bg-no-repeat bg-cover rounded-t-3xl md:w-1/3 md:h-auto md:rounded-t-none md:rounded-tl-3xl`)
         $("#recipe-ingredients-list1").text()
+        $("#save-shopping-btn1").attr("data-id", data[0].id);
 
 
         // Recipe 2
@@ -38,6 +39,7 @@ $(document).ready(function () {
         $("#recipe-heading2").text(data[1].title)
         $("#recipe-img2").attr("class", `flex flex-col items-stretch h-64 bg-[url('${data[1].image}')] bg-center bg-no-repeat bg-cover rounded-t-3xl md:w-1/3 md:h-auto md:rounded-t-none md:rounded-tl-3xl`)
         $("#recipe-ingredients-list2").text()
+        $("#save-shopping-btn2").attr("data-id", data[1].id);
 
 
         // Recipe 3
@@ -45,6 +47,7 @@ $(document).ready(function () {
         $("#recipe-heading3").text(data[2].title)
         $("#recipe-img3").attr("class", `flex flex-col items-stretch h-64 bg-[url('${data[2].image}')] bg-center bg-no-repeat bg-cover rounded-t-3xl md:w-1/3 md:h-auto md:rounded-t-none md:rounded-tl-3xl`)
         $("#recipe-ingredients-list3").text()
+        $("#save-shopping-btn3").attr("data-id", data[2].id);
 
     }
 
@@ -126,7 +129,7 @@ $(document).ready(function () {
 
 
     shopBtnEl.on("click", function (event) {
-        var idShop = $(this).parents().attr("data-id");
+        var idShop = $(this).attr("data-id");
         toShoppingList(idShop);
     })
 
@@ -160,7 +163,6 @@ $(document).ready(function () {
     saveBtnEl.on("click", function () {
         var idSave = $(this).attr("data-id");
         saveRecipe(idSave);
-        console.log(idSave)
     })
 
     // **********

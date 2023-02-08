@@ -22,7 +22,7 @@ $(document).ready(function () {
     function displayRecipe(data) {
         // The contents of this div are dynamically created with JS
         var htmlRec =
-            `<div data-meal="${data.id}" class="p-6 flex flex-col items-stretch space-y-6 md:w-1/2 lg:w-1/3"
+            `<div data-meal="${data.id}" class="p-6 flex flex-col items-stretch space-y-6 md:w-1/2 lg:w-1/3">
                 <div class="card bg-lightGray rounded-3xl drop-shadow-md">
                     <a id="recipe-link-${data.id}" href="#" target="_blank" class="flex flex-col-reverse items-stretch text-left h-64 rounded-t-3xl bg-[url('${data.image}')] bg-center bg-no-repeat bg-cover">
                         <div class="recipe-title p-3 text-lg">

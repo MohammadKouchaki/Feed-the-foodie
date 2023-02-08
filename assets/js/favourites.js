@@ -35,7 +35,6 @@ $(document).ready(function () {
                 </div>
             </div>`
 
-
         // The html variable is added to the div created in HTML
         $("#fav-recipes-container").append(htmlRec);
         $("#recipe-heading-" + data.id).text(data.title);
@@ -170,7 +169,6 @@ $(document).ready(function () {
         localStorage.setItem("restaurant", JSON.stringify(newRestaurantStored));
         location.reload();
     })
-
 
     // Init function
 

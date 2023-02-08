@@ -14,34 +14,36 @@ $(document).ready(function () {
     var mealEl = $("#meal");
     var saveBtnEl = $(".save-recipe-btn")
     var shopBtnEl = $(".save-shopping-btn");
-    var inputEl = $("#ingredients-input");
-
+    var newSearchBtnEl = $("#new-search-btn")
 
     // ***************
     // DISPLAY RECIPES
     // ***************
 
     function displayRecipe(data) {
+        // Display recipes
         $("#recipe-display").removeAttr("hidden");
+        // Hide search options
+        $("#search").attr("hidden", "hidden");
 
         // Recipe 1
-        $("#recipe1").attr("data-id", data[0].id);
+        $("#save-recipe-btn1").attr("data-id", data[0].id);
         $("#recipe-heading1").text(data[0].title)
-        $("#recipe-img1").attr("src", data[0].image)
+        $("#recipe-img1").attr("class", `flex flex-col items-stretch h-64 bg-[url('${data[0].image}')] bg-center bg-no-repeat bg-cover rounded-t-3xl md:w-1/3 md:h-auto md:rounded-t-none md:rounded-tl-3xl`)
         $("#recipe-ingredients-list1").text()
 
 
         // Recipe 2
-        $("#recipe2").attr("data-id", data[1].id);
+        $("#save-recipe-btn2").attr("data-id", data[1].id);
         $("#recipe-heading2").text(data[1].title)
-        $("#recipe-img2").attr("src", data[1].image)
+        $("#recipe-img2").attr("class", `flex flex-col items-stretch h-64 bg-[url('${data[1].image}')] bg-center bg-no-repeat bg-cover rounded-t-3xl md:w-1/3 md:h-auto md:rounded-t-none md:rounded-tl-3xl`)
         $("#recipe-ingredients-list2").text()
 
 
         // Recipe 3
-        $("#recipe3").attr("data-id", data[2].id);
+        $("#save-recipe-btn3").attr("data-id", data[2].id);
         $("#recipe-heading3").text(data[2].title)
-        $("#recipe-img3").attr("src", data[2].image)
+        $("#recipe-img3").attr("class", `flex flex-col items-stretch h-64 bg-[url('${data[2].image}')] bg-center bg-no-repeat bg-cover rounded-t-3xl md:w-1/3 md:h-auto md:rounded-t-none md:rounded-tl-3xl`)
         $("#recipe-ingredients-list3").text()
 
     }
@@ -156,10 +158,18 @@ $(document).ready(function () {
     }
 
     saveBtnEl.on("click", function () {
-        var idSave = $(this).parents().attr("data-id");
+        var idSave = $(this).attr("data-id");
         saveRecipe(idSave);
+        console.log(idSave)
     })
 
+    // **********
+    // NEW SEARCH
+    // **********
+
+    newSearchBtnEl.on("click", function() {
+        location.reload();
+    })
 
     // ********************
     // SEARCH BY INGREDIENT
@@ -294,5 +304,6 @@ $(document).ready(function () {
                 getInfo(data.results);
             })
     })
+
 
 });

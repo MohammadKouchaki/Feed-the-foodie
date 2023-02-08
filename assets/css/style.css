@@ -1,0 +1,14 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2 {
+    font-family: 'Amatic SC', cursive;
+}
+
+.hamburger {
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+}

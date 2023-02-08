@@ -5,186 +5,401 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px'
+                },
+                extend: {
+                    colors: {
+                        lightOrange: '#f79970',
+                        darkOrange: '#f57f4c',
+                        veryLightGreen: '#cdd8c3',
+                        lightGreen: '#819d69',
+                        darkGreen: '#628444',
+                        lightGray: '#f6f4f5',
+                        darkGray: '#424242',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>🥕🥘Let's cook!</title>
+    <title>Recipes</title>
 </head>
 
 <body>
-    <!-- Search by ingredient -->
-    <h2>Please choose at least one ingredient:</h2>
-    <form action="/action_page.php" method="get">
-        <label for="meats">Choose a type of meat/fish:</label>
-        <select id="meats" name="meats">
-            <option value="" disabled selected>-</option>
-            <option value='anchovies'>anchovies</option>
-            <option value='clams'>clams</option>
-            <option value='mussels'>mussels</option>
-            <option value='salmon_fillet'>salmon</option>
-            <option value='raw_shrimp'>shrimp</option>
-            <option value='tuna'>tuna</option>
-            <option value='bacon'>bacon</option>
-            <option value='beef'>beef</option>
-            <option value='chicken'>chicken</option>
-            <option value='chorizo_sausage'>chorizo</option>
-            <option value='lamb'>lamb</option>
-            <option value='ground_beef'>ground beef</option>
-            <option value='pork'>pork</option>
-            <option value='sausage'>sausages</option>
-            <option value='ground_veal'>veal</option>
-        </select>
-        <label for="vegetables">Choose a type of vegetable:</label>
-        <select id="vegetables" name="vegetables">
-            <option value="" disabled selected>-</option>
-            <option value='asparagus_spears'>asparagus</option>
-            <option value='avocado'>avocado</option>
-            <option value='broccoli'>broccoli</option>
-            <option value='butternut_squash'>butternut squash</option>
-            <option value='carrots'>carrots</option>
-            <option value='celery'>celery</option>
-            <option value="cauliflower">cauliflower</option>
-            <option value='cucumber'>cucumber</option>
-            <option value='eggplant'>eggplant</option>
-            <option value='fennel'>fennel</option>
-            <option value='garlic'>garlic</option>
-            <option value='jalapeno'>jalapeño</option>
-            <option value='kale'>kale</option>
-            <option value='lettuce'>lettuce</option>
-            <option value='mushroom'>mushrooms</option>
-            <option value='onion'>onion</option>
-            <option value='potatoes'>potatoes</option>
-            <option value='shallot'>shallots</option>
-            <option value='spinach'>spinach</option>
-            <option value='tomatoes'>tomatoes</option>
-        </select>
-        <label for="fruits">Choose a type of fruit:</label>
-        <select id="fruits" name="fruits">
-            <option value="" disabled selected>-</option>
-            <option value='apples'>apples</option>
-            <option value='apricot'>apricot</option>
-            <option value='banana'>banana</option>
-            <option value='blueberries'>blueberries</option>
-            <option value='lemon'>lemon</option>
-            <option value='lime'>lime</option>
-            <option value='orange'>orange</option>
-            <option value='peach'>peaches</option>
-            <option value='raisins'>raisins</option>
-            <option value='raspberries'>raspberries</option>
-            <option value='strawberries'>strawberries</option>
-        </select>
-        <label for="others">Choose other ingredients:</label>
-        <select id="others" name="others">
-            <option value="" disabled selected>-</option>
-            <option value='basmati_rice'>basmati rice</option>
-            <option value='black_beans'>black beans</option>
-            <option value='cannellini_beans'>cannellini beans</option>
-            <option value='cauliflower_rice'>cauliflower rice</option>
-            <option value='raw_cashews'>cashews</option>
-            <option value='chickpea'>chickpeas</option>
-            <option value='couscous'>couscous</option>
-            <option value='green_beans'>green beans</option>
-            <option value='canned_kidney_beans'>kidney beans</option>
-            <option value='red_lentils'>lentils</option>
-            <option value='pasta'>pasta</option>
-            <option value='peanuts'>peanuts</option>
-            <option value='peas'>peas</option>
-            <option value='pinto_beans'>pinto beans</option>
-            <option value='refried_beans'>refried beans</option>
-            <option value='rice'>rice</option>
-        </select>
-
-        <button id="ingredients-btn" name="ingredients" type="submit">Submit</button>
-    </form>
-
-    <!-- Search by cuisine -->
-    <h2>Choose a type of cuisine:</h2>
-    <form action="/action_page.php" method="get">
-        <label for="cuisine">Choose a cuisine:</label>
-        <select id="cuisine" name="cuisine">
-            <option value="" disabled selected>-</option>
-            <option value='American'>American</option>
-            <option value='British'>British</option>
-            <option value='Caribbean'>Caribbean</option>
-            <option value='Chinese'>Chinese</option>
-            <option value='French'>French</option>
-            <option value='German'>German</option>
-            <option value='Greek'>Greek</option>
-            <option value='Indian'>Indian</option>
-            <option value='Irish'>Irish</option>
-            <option value='Italian'>Italian</option>
-            <option value='Japanese'>Japanese</option>
-            <option value='Korean'>Korean</option>
-            <option value='Mediterranean'>Mediterranean</option>
-            <option value='Mexican'>Mexican</option>
-            <option value='Middle Eastern'>Middle Eastern</option>
-            <option value='Spanish'>Spanish</option>
-            <option value='Thai'>Thai</option>
-            <option value='Vietnamese'>Vietnamese</option>
-
-        </select>
-
-        <button id="cuisine-btn" name="cuisine" type="submit">Submit</button>
-    </form>
-
-    <!-- Search by type of meal -->
-    <h2>Choose a type of meal:</h2>
-    <form action="/action_page.php" method="get">
-        <label for="meal">Choose a type of meal:</label>
-        <select id="meal" name="meal">
-            <option value="" disabled selected>-</option>
-            <option value='appetizer'>appetizer</option>
-            <option value='breakfast'>breakfast</option>
-            <option value='dessert'>dessert</option>
-            <option value='fingerfood'>fingerfood</option>
-            <option value='main_course'>main course</option>
-            <option value='salad'>salad</option>
-            <option value='sauce'>sauce</option>
-            <option value='snack'>snack</option>
-            <option value='side_dish'>side dish</option>
-            <option value='soup'>soup</option>
-        </select>
-
-        <button id="meal-btn" name="meal" type="submit">Submit</button>
-    </form>
-
-    <!-- Recipe display (hidden by default) -->
-    <section id="recipe-display" hidden>
-        <div id="recipe1">
-            <h2 id="recipe-heading1">Recipe title</h2>
-            <img id="recipe-img1" src="#" alt="image of a recipe">
-            <h3 id="recipe-ingredients-heading1">Ingredients</h3>
-            <ul id="recipe-ingredients-list1"></ul>
-            <h3 id="recipe-instructions-heading1">Instructions</h3>
-            <p id="recipe-instructions1"></p>
-            <button class="save-recipe-btn">Save this recipe</button>
-            <button class="save-shopping-btn">Add all ingredients to your shopping list</button>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6 min-w-full border-solid border-b border-gray-400">
+        <!-- Flex Container -->
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div>
+                <img src="./assets/images/Logo.png" class="h-10" alt="Company Logo">
+            </div>
+            <!-- Menu Items -->
+            <div class="hidden md:flex space-x-6">
+                <a href="x" class="hover:text-darkOrange">Home</a>
+                <a href="x" class="hover:text-darkOrange">Recipes</a>
+                <a href="x" class="hover:text-darkOrange">Restaurants</a>
+                <a href="x" class="hover:text-darkOrange">My Favourites</a>
+                <a href="x" class="hover:text-darkOrange">Shopping List</a>
+            </div>
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="block hamburger md:hidden">
+                <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+                <i id="xmark" class="fa-solid fa-xmark text-2xl hidden"></i>
+            </button>
         </div>
-        <div id="recipe2">
-            <h2 id="recipe-heading2">Recipe title</h2>
-            <img id="recipe-img2" src="#" alt="image of a recipe">
-            <h3 id="recipe-ingredients-heading2">Ingredients</h3>
-            <ul id="recipe-ingredients-list2"></ul>
-            <h3 id="recipe-instructions-heading2">Instructions</h3>
-            <p id="recipe-instructions2"></p>
-            <button class="save-recipe-btn">Save this recipe</button>
-            <button class="save-shopping-btn">Add all ingredients to your shopping list</button>
+        <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <div id="menu"
+                class="absolute hidden flex flex-col items-stretch text-center self-end p-6 mt-3 space-y-3 bg-white w-auto sm:self-center left-6 right-6 drop-shadow-md">
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Home</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Recipes</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Restaurants</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">My Favourites</a>
+                <a href="x">Shopping List</a>
+            </div>
         </div>
-        <div id="recipe3">
-            <h2 id="recipe-heading3">Recipe title</h2>
-            <img id="recipe-img3" src="#" alt="image of a recipe">
-            <h3 id="recipe-ingredients-heading3">Ingredients</h3>
-            <ul id="recipe-ingredients-list3"></ul>
-            <h3 id="recipe-instructions-heading3">Instructions</h3>
-            <p id="recipe-instructions3"></p>
-            <button class="save-recipe-btn">Save this recipe</button>
-            <button class="save-shopping-btn">Add all ingredients to your shopping list</button>
+    </nav>
+
+    <!-- Intro Section-->
+    <section>
+        <div class="text-center p-4 mx-6 space-y-4 md:p-6 border-solid border-b border-gray-400 lg:mx-20">
+            <h1 class="text-4xl font-bold text-darkOrange md:text-7xl">Let's cook!</h1>
+            <p class="max-w-3xl mx-auto md:text-lg">Your future favourite recipe is just one click away! Browse and
+                search all the recipes on Feed The Foodie by selecting at least one of the options presented below.
+                You'll be matched with three amazingly delicious, easy-to-follow recipes. Bon appetit! </p>
         </div>
     </section>
 
-    <!-- Link to restaurants -->
-    <div>
-        <h2>You couldn't find any recipes you liked? How about you go out instead?</h2>
-        <a href="#" target="_blank">Restaurants</a>
-    </div>
+    <!-- Selection Section-->
+    <section id="search">
+        <!-- Flex Container -->
+        <div class="flex flex-col items-stretch p-6 mx-auto text-center">
+            <div>
+                <h2
+                    class="text-2xl p-2 mb-6 text-darkGray font-bold bg-veryLightGreen rounded-md md:text-4xl md:p-4 lg:mx-16">
+                    Please select one search option</h2>
+            </div>
+
+            <!-- Ingredient Form -->
+            <div class="text-lg text-left mb-2 lg:mx-16">
+                <p>Ingredients:</p>
+            </div>
+            <form action="/action_page.php" method="get">
+                <div
+                    class="flex flex-col space-y-4 pb-4 border-solid border-b border-gray-400 md:flex-row md:space-y-0 md:space-x-6 md:pb-6 lg:mx-16">
+                    <select id="meats" name="meats" class="md:w-fit lg:w-1/5 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>-</option>
+                        <option value='anchovies'>anchovies</option>
+                        <option value='clams'>clams</option>
+                        <option value='mussels'>mussels</option>
+                        <option value='salmon_fillet'>salmon</option>
+                        <option value='raw_shrimp'>shrimp</option>
+                        <option value='tuna'>tuna</option>
+                        <option value='bacon'>bacon</option>
+                        <option value='beef'>beef</option>
+                        <option value='chicken'>chicken</option>
+                        <option value='chorizo_sausage'>chorizo</option>
+                        <option value='lamb'>lamb</option>
+                        <option value='ground_beef'>ground beef</option>
+                        <option value='pork'>pork</option>
+                        <option value='sausage'>sausages</option>
+                        <option value='ground_veal'>veal</option>
+                    </select>
+                    <select id="vegetables" name="vegetables"
+                        class="md:w-fit lg:w-1/5 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>-</option>
+                        <option value='asparagus_spears'>asparagus</option>
+                        <option value='avocado'>avocado</option>
+                        <option value='broccoli'>broccoli</option>
+                        <option value='butternut_squash'>butternut squash</option>
+                        <option value='carrots'>carrots</option>
+                        <option value='celery'>celery</option>
+                        <option value="cauliflower">cauliflower</option>
+                        <option value='cucumber'>cucumber</option>
+                        <option value='eggplant'>eggplant</option>
+                        <option value='fennel'>fennel</option>
+                        <option value='garlic'>garlic</option>
+                        <option value='jalapeno'>jalapeño</option>
+                        <option value='kale'>kale</option>
+                        <option value='lettuce'>lettuce</option>
+                        <option value='mushroom'>mushrooms</option>
+                        <option value='onion'>onion</option>
+                        <option value='potatoes'>potatoes</option>
+                        <option value='shallot'>shallots</option>
+                        <option value='spinach'>spinach</option>
+                        <option value='tomatoes'>tomatoes</option>
+                    </select>
+                    <select id="fruits" name="fruits" class="md:w-1/5 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>-</option>
+                        <option value='apples'>apples</option>
+                        <option value='apricot'>apricot</option>
+                        <option value='banana'>banana</option>
+                        <option value='blueberries'>blueberries</option>
+                        <option value='lemon'>lemon</option>
+                        <option value='lime'>lime</option>
+                        <option value='orange'>orange</option>
+                        <option value='peach'>peaches</option>
+                        <option value='raisins'>raisins</option>
+                        <option value='raspberries'>raspberries</option>
+                        <option value='strawberries'>strawberries</option>
+                    </select>
+                    <select id="others" name="others" class="md:w-1/5 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>-</option>
+                        <option value='basmati_rice'>basmati rice</option>
+                        <option value='black_beans'>black beans</option>
+                        <option value='cannellini_beans'>cannellini beans</option>
+                        <option value='cauliflower_rice'>cauliflower rice</option>
+                        <option value='raw_cashews'>cashews</option>
+                        <option value='chickpea'>chickpeas</option>
+                        <option value='couscous'>couscous</option>
+                        <option value='green_beans'>green beans</option>
+                        <option value='canned_kidney_beans'>kidney beans</option>
+                        <option value='red_lentils'>lentils</option>
+                        <option value='pasta'>pasta</option>
+                        <option value='peanuts'>peanuts</option>
+                        <option value='peas'>peas</option>
+                        <option value='pinto_beans'>pinto beans</option>
+                        <option value='refried_beans'>refried beans</option>
+                        <option value='rice'>rice</option>
+                    </select>
+                    <button
+                        class="p-2 w-24 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"
+                        id="ingredients-btn" name="ingredients" type="submit">Search</button>
+                </div>
+            </form>
+
+            <!-- Cuisine Form -->
+            <div class="mt-4 text-lg text-left mb-2 lg:mx-16">
+                <p>Type of cuisine:</p>
+            </div>
+            <form action="/action_page.php" method="get">
+                <div
+                    class="flex flex-col space-y-4 pb-4 border-solid border-b border-gray-400 md:flex-row md:space-y-0 md:space-x-6 md:pb-6 lg:mx-16">
+                    <select id="cuisine" name="cuisine" class="md:w-1/3 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>-</option>
+                        <option value='American'>American</option>
+                        <option value='British'>British</option>
+                        <option value='Caribbean'>Caribbean</option>
+                        <option value='Chinese'>Chinese</option>
+                        <option value='French'>French</option>
+                        <option value='German'>German</option>
+                        <option value='Greek'>Greek</option>
+                        <option value='Indian'>Indian</option>
+                        <option value='Irish'>Irish</option>
+                        <option value='Italian'>Italian</option>
+                        <option value='Japanese'>Japanese</option>
+                        <option value='Korean'>Korean</option>
+                        <option value='Mediterranean'>Mediterranean</option>
+                        <option value='Mexican'>Mexican</option>
+                        <option value='Middle Eastern'>Middle Eastern</option>
+                        <option value='Spanish'>Spanish</option>
+                        <option value='Thai'>Thai</option>
+                        <option value='Vietnamese'>Vietnamese</option>
+                    </select>
+                    <button
+                        class="p-2 w-24 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"
+                        id="cuisine-btn" name="cuisine" type="submit">Search</button>
+                </div>
+            </form>
+
+            <!-- Course Form -->
+            <div class="mt-4 text-lg text-left mb-2 lg:mx-16">
+                <p>Type of meal:</p>
+            </div>
+            <form action="/action_page.php" method="get">
+                <div
+                    class="flex flex-col space-y-4 pb-4 border-solid border-b border-gray-400 md:flex-row md:space-y-0 md:space-x-6 md:pb-6 lg:mx-16">
+                    <label for="meal">Choose a type of meal:</label>
+                    <select id="meal" name="meal" class="md:w-1/3 rounded p-2 ring-1 ring-gray-400">
+                        <option value="" disabled selected>-</option>
+                        <option value='appetizer'>appetizer</option>
+                        <option value='breakfast'>breakfast</option>
+                        <option value='dessert'>dessert</option>
+                        <option value='fingerfood'>fingerfood</option>
+                        <option value='main_course'>main course</option>
+                        <option value='salad'>salad</option>
+                        <option value='sauce'>sauce</option>
+                        <option value='snack'>snack</option>
+                        <option value='side_dish'>side dish</option>
+                        <option value='soup'>soup</option>
+                    </select>
+                    <button
+                        class="p-2 w-24 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"
+                        id="meal-btn" name="meal" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Recipe display (hidden by default) -->
+    <section id="recipe-display" hidden>
+        <!-- Flex Container -->
+        <div class="flex flex-col p-6 mx-auto text-center">
+            <!-- Recipe Card 1-->
+            <div id="recipe1"
+                class="flex flex-col items-stretch bg-lightGray rounded-3xl drop-shadow-md lg:w-4/5 lg:max-w-6xl lg:mx-auto">
+                <div class="flex flex-col md:flex-row">
+                    <div id="recipe-img1">
+                    </div>
+                    <div class="flex flex-col items-stretch px-6 md:w-2/3">
+                        <div
+                            class="text-2xl p-2 mt-6 mb-10 text-darkGray font-bold bg-veryLightGreen rounded-md md:text-3xl">
+                            <h2 id="recipe-heading1">Recipe title</h2>
+                        </div>
+                        <div class="text-lg pb-1 font-bold border-solid border-b border-gray-400">
+                            <h3 id="recipe-ingredients-heading1">Ingredients</h3>
+                        </div>
+                        <div class="text-left pl-6 pt-6">
+                            <ul id="recipe-ingredients-list1" class="marker:text-darkOrange list-disc"></ul>
+                        </div>
+                        <div>
+                            <h3 id="recipe-instructions-heading1"
+                                class="pb-1 mt-10 mx-6 font-bold border-solid border-b border-gray-400">Instructions
+                            </h3>
+                            <p id="recipe-instructions1" class="text-left text-lg p-6"></p>
+                        </div>
+                        <div
+                            class="flex flex-col p-6 bg-white space-y-4 rounded-b-3xl md:flex-row md:justify-center md:space md:space-y-0 md:space-x-12">
+                            <button id="save-recipe-btn1"
+                                class="save-recipe-btn mx-auto p-2 w-44 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange md:mx-0">Save
+                                Recipe</button>
+                            <button
+                                class="save-shopping-btn mx-auto p-2 w-44 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen md:mx-0">Add
+                                to Shopping List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Recipe Card 2-->
+            <div id="recipe2"
+                class="flex flex-col items-stretch bg-lightGray rounded-3xl drop-shadow-md lg:w-4/5 lg:max-w-6xl lg:mx-auto">
+                <div class="flex flex-col md:flex-row">
+                    <div id="recipe-img2">
+                    </div>
+                    <div class="flex flex-col items-stretch px-6 md:w-2/3">
+                        <div
+                            class="text-2xl p-2 mt-6 mb-10 text-darkGray font-bold bg-veryLightGreen rounded-md md:text-3xl">
+                            <h2 id="recipe-heading2">Recipe title</h2>
+                        </div>
+                        <div class="text-lg pb-1 font-bold border-solid border-b border-gray-400">
+                            <h3 id="recipe-ingredients-heading2">Ingredients</h3>
+                        </div>
+                        <div class="text-left pl-6 pt-6">
+                            <ul id="recipe-ingredients-list2" class="marker:text-darkOrange list-disc"></ul>
+                        </div>
+                        <div>
+                            <h3 id="recipe-instructions-heading2"
+                                class="pb-1 mt-10 mx-6 font-bold border-solid border-b border-gray-400">Instructions
+                            </h3>
+                            <p id="recipe-instructions2" class="text-left text-lg p-6"></p>
+                        </div>
+                        <div
+                            class="flex flex-col p-6 bg-white space-y-4 rounded-b-3xl md:flex-row md:justify-center md:space md:space-y-0 md:space-x-12">
+                            <button id="save-recipe-btn2"
+                                class="save-recipe-btn mx-auto p-2 w-44 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange md:mx-0">Save
+                                Recipe</button>
+                            <button
+                                class="save-shopping-btn mx-auto p-2 w-44 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen md:mx-0">Add
+                                to Shopping List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Recipe Card 3-->
+            <div id="recipe3"
+                class="flex flex-col items-stretch bg-lightGray rounded-3xl drop-shadow-md lg:w-4/5 lg:max-w-6xl lg:mx-auto">
+                <div class="flex flex-col md:flex-row">
+                    <div id="recipe-img3">
+                    </div>
+                    <div class="flex flex-col items-stretch px-6 md:w-2/3">
+                        <div
+                            class="text-2xl p-2 mt-6 mb-10 text-darkGray font-bold bg-veryLightGreen rounded-md md:text-3xl">
+                            <h2 id="recipe-heading3">Recipe title</h2>
+                        </div>
+                        <div class="text-lg pb-1 font-bold border-solid border-b border-gray-400">
+                            <h3 id="recipe-ingredients-heading3">Ingredients</h3>
+                        </div>
+                        <div class="text-left pl-6 pt-6">
+                            <ul id="recipe-ingredients-list3" class="marker:text-darkOrange list-disc"></ul>
+                        </div>
+                        <div>
+                            <h3 id="recipe-instructions-heading3"
+                                class="pb-1 mt-10 mx-6 font-bold border-solid border-b border-gray-400">Instructions
+                            </h3>
+                            <p id="recipe-instructions3" class="text-left text-lg p-6"></p>
+                        </div>
+                        <div
+                            class="flex flex-col p-6 bg-white space-y-4 rounded-b-3xl md:flex-row md:justify-center md:space md:space-y-0 md:space-x-12">
+                            <button id="save-recipe-btn3"
+                                class="save-recipe-btn mx-auto p-2 w-44 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange md:mx-0">Save
+                                Recipe</button>
+                            <button
+                                class="save-shopping-btn mx-auto p-2 w-44 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen md:mx-0">Add
+                                to Shopping List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <!-- Redirect to Restaurants -->
+    <section>
+        <!-- Flex Container -->
+        <div class="flex flex-col p-6 mt-12 mx-6 pt-12 text-center border-solid border-t border-gray-400 lg:mx-20">
+            <div class="flex">
+                <p class="max-w-3xl mx-auto md:text-lg">Didn't like the three presented recipes? Try changing your
+                    selection criteria and
+                    search again. If you no longer feel like cooking, visit our Restaurants page to look for eating out
+                    options.</p>
+            </div>
+            <div class="flex justify-center flex-col p-6 space-y-4 md:flex-row md:space-x-12 md:space-y-0">
+                <button id="new-search-btn"
+                    class="p-2 w-44 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange md:mx-0">
+                    New Search</button>
+                <a href="#"
+                    class="p-2 w-44 mx-auto text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen md:mx-0">
+                    View Restaurants</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section-->
+    <footer class="bg-darkGray">
+        <!-- Flex Container -->
+        <div class="container flex flex-col space-y-3 p-3 min-w-full">
+            <div class="flex space-x-8 justify-center text-center">
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook-f text-lg text-white hover:text-lightOrange"></i></a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter text-lg text-white hover:text-lightOrange"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram text-lg text-white hover:text-lightOrange"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <i class="fab fa-linkedin-in text-lg text-white hover:text-lightOrange"></i>
+                </a>
+            </div>
+            <div>
+                <p class="flex justify-center text-sm text-white">© 2023 by Feed The Foodie</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>

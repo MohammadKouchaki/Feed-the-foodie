@@ -11,6 +11,31 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>My favorites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px'
+                },
+                extend: {
+                    colors: {
+                        lightOrange: '#f79970',
+                        darkOrange: '#f57f4c',
+                        veryLightGreen: '#cdd8c3',
+                        lightGreen: '#819d69',
+                        darkGreen: '#628444',
+                        lightGray: '#f6f4f5',
+                        darkGray: '#424242',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
 </head>
 
 
@@ -111,32 +136,6 @@
         </div>
     </footer>
 </body>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            screens: {
-                sm: '480px',
-                md: '768px',
-                lg: '976px',
-                xl: '1440px'
-            },
-            extend: {
-                colors: {
-                    lightOrange: '#f79970',
-                    darkOrange: '#f57f4c',
-                    veryLightGreen: '#cdd8c3',
-                    lightGreen: '#819d69',
-                    darkGreen: '#628444',
-                    lightGray: '#f6f4f5',
-                    darkGray: '#424242',
-                }
-            }
-        }
-    }
-</script>
-<script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="./assets/js/favourites.js"></script>

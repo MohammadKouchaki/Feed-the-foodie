@@ -24,7 +24,7 @@ $(document).ready(function () {
         var htmlRec =
             `<div data-meal="${data.id}" class="p-6 flex flex-col items-stretch space-y-6 md:w-1/2 lg:w-1/3"
                 <div class="card bg-lightGray rounded-3xl drop-shadow-md">
-                    <a id="recipe-link-${data.id}" href="#" target="_blank" class="class="flex flex-col-reverse items-stretch text-left h-64 rounded-t-3xl bg-[url('${data.image}')] bg-center bg-no-repeat bg-cover">
+                    <a id="recipe-link-${data.id}" href="#" target="_blank" class="flex flex-col-reverse items-stretch text-left h-64 rounded-t-3xl bg-[url('${data.image}')] bg-center bg-no-repeat bg-cover">
                         <div class="recipe-title p-3 text-lg">
                             <h3 id="recipe-heading-${data.id}"></h3>
                         </div>
@@ -35,10 +35,11 @@ $(document).ready(function () {
                 </div>
             </div>`
 
+
         // The html variable is added to the div created in HTML
         $("#fav-recipes-container").append(htmlRec);
         $("#recipe-heading-" + data.id).text(data.title);
-        $("#recipe-link-" + data.idMeal).attr("href", data.sourceUrl);
+        $("#recipe-link-" + data.id).attr("href", data.sourceUrl);
     }
 
     // Event listener for the delete recipe button
@@ -75,13 +76,14 @@ $(document).ready(function () {
 
         // For as many IDs as are saved to local storage fetch the API based on the specific ID saved and display it to the screen
         for (var i = 0; i < recipeId.length; i++) {
-            urlWithId = "https://api.spoonacular.com/recipes/" + recipeId[i] + "/information?&apiKey=34486790fc234b2daa001d801bc76511"
+            urlWithRecipeId = "https://api.spoonacular.com/recipes/" + recipeId[i] + "/information?&apiKey=34486790fc234b2daa001d801bc76511"
             fetch(urlWithRecipeId)
                 .then(function (response) {
                     return response.json();
                 })
                 .then(function (data) {
                     displayRecipe(data);
+                    console.log(data.image)
                 })
         }
     }
@@ -166,6 +168,7 @@ $(document).ready(function () {
         }
         // The new array gets saved to local storage
         localStorage.setItem("restaurant", JSON.stringify(newRestaurantStored));
+        location.reload();
     })
 
 

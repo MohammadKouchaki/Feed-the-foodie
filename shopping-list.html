@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px'
+                },
+                extend: {
+                    colors: {
+                        lightOrange: '#f79970',
+                        darkOrange: '#f57f4c',
+                        veryLightGreen: '#cdd8c3',
+                        lightGreen: '#819d69',
+                        darkGreen: '#628444',
+                        lightGray: '#f6f4f5',
+                        darkGray: '#424242',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Shopping List</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6 min-w-full border-solid border-b border-gray-400">
+        <!-- Flex Container -->
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div>
+                <img src="./assets/images/Logo.png" class="h-10" alt="Company Logo">
+            </div>
+            <!-- Menu Items -->
+            <div class="hidden md:flex space-x-6">
+                <a href="x" class="hover:text-darkOrange">Home</a>
+                <a href="x" class="hover:text-darkOrange">Recipes</a>
+                <a href="x" class="hover:text-darkOrange">Restaurants</a>
+                <a href="x" class="hover:text-darkOrange">My Favourites</a>
+                <a href="x" class="hover:text-darkOrange">Shopping List</a>
+            </div>
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="block hamburger md:hidden">
+                <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+                <i id="xmark" class="fa-solid fa-xmark text-2xl hidden"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <div id="menu"
+                class="absolute hidden flex flex-col items-stretch text-center self-end p-6 mt-3 space-y-3 bg-white w-auto sm:self-center left-6 right-6 drop-shadow-md">
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Home</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Recipes</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">Restaurants</a>
+                <a href="x" class="border-b-[1px] pb-3 border-gray-400">My Favourites</a>
+                <a href="x">Shopping List</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shopping List Section-->
+    <main class="flex flex-col p-6 mx-auto text-center min-h-screen">
+        <div>
+            <h1
+                class="text-4xl pb-6 font-bold text-darkOrange border-solid border-b border-gray-400 md:text-7xl md:mx-16 lg:w-3/5 lg:mx-auto">
+                Your Shopping List</h1>
+        </div>
+        <form
+            class="flex flex-col mt-12 mb-6 space-y-4 pb-4 md:flex-row md:justify-center md:space-y-0 md:space-x-6 md:pb-6 lg:mx-24">
+            <input
+                class="rounded p-2 ring-1 ring-gray-400 focus:outline-none focus:ring-darkGreen focus:ring-2 md:w-3/5"
+                type="text" id="ingredients-input" name="ingredients" placeholder="ADD SHOPPING LIST ITEM">
+            <button
+                class="justify-items-right p-2 w-24 mx-auto text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange"
+                type="submit" value="Submit" id="submit-btn">Add Item</button>
+        </form>
+        <div class="flex flex-col items-stretch bg-lightGray rounded-3xl drop-shadow-md md:w-4/5 md:mx-auto lg:w-3/5">
+            <ul id="ingredients-list" class="text-left p-6 space-y-3 md:text-md"></ul>
+        </div>
+        <div
+            class="flex flex-col p-6 bg-white space-y-4 rounded-b-3xl md:flex-row md:justify-center md:space md:space-y-0 md:space-x-12">
+            <button id="clear-btn"
+                class="mx-auto p-2 w-44 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange md:mx-0">Clear
+                Shopping List</button>
+            <button id="print-btn"
+                class="mx-auto p-2 w-44 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen md:mx-0">Print
+                Shopping List</button>
+        </div>
+    </main>
+
+    <!-- Footer Section-->
+    <footer class="bg-darkGray">
+        <!-- Flex Container -->
+        <div class="container flex flex-col space-y-3 p-3 min-w-full">
+            <div class="flex space-x-8 justify-center text-center">
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook-f text-lg text-white hover:text-lightOrange"></i></a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter text-lg text-white hover:text-lightOrange"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram text-lg text-white hover:text-lightOrange"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <i class="fab fa-linkedin-in text-lg text-white hover:text-lightOrange"></i>
+                </a>
+            </div>
+            <div>
+                <p class="flex justify-center text-sm text-white">© 2023 by Feed The Foodie</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/shopping-list.js"></script>
+</body>
+
+</html>

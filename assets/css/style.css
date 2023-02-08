@@ -1,0 +1,30 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2 {
+    font-family: 'Amatic SC', cursive;
+}
+
+.hamburger {
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+}
+
+.recipe-title {
+    background-color: rgba(248, 249, 249, .8);
+}
+
+.card {
+    position: relative;
+    top: 0px; 
+}
+
+.card:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.1);
+    top: -3px;
+    background-color: #fbfafa;
+}

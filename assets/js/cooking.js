@@ -1,4 +1,21 @@
 $(document).ready(function () {
+    // ******************
+    // STYLING FOR NAVBAR
+    // ******************
+
+    var menuBtn = document.getElementById('menu-button');
+    var menu = document.getElementById('menu');
+    var barsIcon = document.getElementById('bars');
+    var xmarkIcon = document.getElementById('xmark');
+
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        barsIcon.classList.toggle('hidden');
+        xmarkIcon.classList.toggle('hidden');
+    });
+
+
+
     var spoonacularUrlIng = "https://api.spoonacular.com/recipes/findByIngredients?number=3&ignorePantry=true&apiKey=34486790fc234b2daa001d801bc76511&ingredients=";
     var spoonacularUrlCui = "https://api.spoonacular.com/recipes/complexSearch?number=3&apiKey=34486790fc234b2daa001d801bc76511&cuisine=";
     var spoonacularUrlMeal = "https://api.spoonacular.com/recipes/complexSearch?number=3&apiKey=34486790fc234b2daa001d801bc76511&type="
@@ -169,7 +186,7 @@ $(document).ready(function () {
     // NEW SEARCH
     // **********
 
-    newSearchBtnEl.on("click", function() {
+    newSearchBtnEl.on("click", function () {
         location.reload();
     })
 

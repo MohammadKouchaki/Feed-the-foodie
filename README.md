@@ -8,6 +8,26 @@ The application helps people find recipes they hadn't thought of before or resta
 
 ## Screenshots
 
+### Home page
+
+![Home page](./assets/images/screenshots/home-page.png)
+
+### Recipes
+
+![Recipes page](./assets/images/screenshots/recipes.png)
+
+### Restaurants
+
+![Restaurants page](./assets/images/screenshots/restaurants.png)
+
+### Favourites
+
+![Favourites page](./assets/images/screenshots/favourites.png)
+
+### Shopping list
+
+![Shopping list page](./assets/images/screenshots/shopping-list.png)
+
 ## Deployment
 
 ## Credits

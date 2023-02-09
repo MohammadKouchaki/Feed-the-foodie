@@ -32,6 +32,8 @@ The application helps people find recipes they hadn't thought of before or resta
 
 ## Credits
 
+We used [Tailwind](https://tailwindcss.com/docs/installation) to style this page and use their documentation for guidance
+
 ## Project Proposal
 
 [Here](https://docs.google.com/document/d/1AQT4OEH4UhSiaxFsiAVgNsJgzWs-vwxX/edit?usp=share_link&ouid=102341349698427392931&rtpof=true&sd=true) is a link to view our initial project proposal 

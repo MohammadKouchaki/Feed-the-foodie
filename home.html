@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '480px',
+                    md: '768px',
+                    lg: '976px',
+                    xl: '1440px'
+                },
+                extend: {
+                    colors: {
+                        lightOrange: '#f79970',
+                        darkOrange: '#f57f4c',
+                        lightGreen: '#819d69',
+                        darkGreen: '#628444',
+                        lightGray: '#f6f4f5',
+                        darkGray: '#424242',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/9404c85ef8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Feed The Foodie</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6 min-w-full">
+        <!-- Flex Container -->
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div>
+                <img src="./assets/images/Logo.png" class="h-10" alt="Company Logo">
+            </div>
+            <!-- Menu Items -->
+            <div class="hidden md:flex space-x-6">
+                <a href="./home.html" class="hover:text-darkOrange">Home</a>
+                <a href="./cooking.html" class="hover:text-darkOrange">Recipes</a>
+                <a href="restaurant.html" class="hover:text-darkOrange">Restaurants</a>
+                <a href="./favourites.html" class="hover:text-darkOrange">My Favourites</a>
+                <a href="./shopping-list.html" class="hover:text-darkOrange">Shopping List</a>
+            </div>
+            <!-- Hamburger Icon -->
+            <button id="menu-button" class="block hamburger md:hidden">
+                <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+                <i id="xmark" class="fa-solid fa-xmark text-2xl hidden"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <div id="menu"
+                class="absolute hidden flex flex-col items-stretch text-center self-end p-6 mt-3 space-y-3 bg-white w-auto sm:self-center left-6 right-6 drop-shadow-md">
+                <a href="home.html" class="border-b-[1px] pb-3 border-gray-400">Home</a>
+                <a href="cooking.html" class="border-b-[1px] pb-3 border-gray-400">Recipes</a>
+                <a href="restaurant.html" class="border-b-[1px] pb-3 border-gray-400">Restaurants</a>
+                <a href="favourites.html" class="border-b-[1px] pb-3 border-gray-400">My Favourites</a>
+                <a href="shopping-list.html">Shopping List</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section-->
+    <section class="min-h-screen flex bg-[url('./assets/images/hero-img.jpg')] bg-center bg-no-repeat bg-cover p-6">
+        <!-- Flex Container -->
+        <div class="container flex flex-col m-auto justify-center" id="hero-container">
+            <!-- Hero Text-->
+            <div class="flex flex-col space-y-4 items-center p-6 justify-around md:space-y-6">
+                <h1 class="text-4xl font-bold text-darkGray text-center md:text-7xl">
+                    Hey there, foodie!
+                </h1>
+                <p class="text-center md:text-lg">
+                    Hungry for something, but don't know what? You've come to the right place! We are here to help you
+                    to discover your next unforgettably delicious meal. Let's start by deciding if you want to cook or
+                    go out to eat.
+                </p>
+                <!-- Hero Buttons -->
+                <div class="flex flex-col space-y-4 md:flex-row md:space-x-12 md:space-y-0 md:text-lg">
+                    <a href="cooking.html"
+                        class="p-2 w-32 text-center text-white bg-darkOrange rounded-full hover:bg-lightOrange">Cooking</a>
+                    <a href="restaurant.html"
+                        class="p-2 w-32 text-center text-white bg-darkGreen rounded-full hover:bg-lightGreen">Eating
+                        Out</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section-->
+    <footer class="bg-lightGray">
+        <!-- Flex Container -->
+        <div class="container flex flex-col space-y-3 p-3 min-w-full">
+            <div class="flex space-x-8 justify-center text-center">
+                <a href="https://www.facebook.com">
+                    <i class="fab fa-facebook-f text-lg text-darkGray hover:text-darkOrange"></i></a>
+                <a href="https://twitter.com">
+                    <i class="fab fa-twitter text-lg text-darkGray hover:text-darkOrange"></i>
+                </a>
+                <a href="https://instagram.com">
+                    <i class="fab fa-instagram text-lg text-darkGray hover:text-darkOrange"></i>
+                </a>
+                <a href="https://www.linkedin.com">
+                    <i class="fab fa-linkedin-in text-lg text-darkGray hover:text-darkOrange"></i>
+                </a>
+            </div>
+            <div>
+                <p class="flex justify-center text-sm">© 2023 by Feed The Foodie</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/home.js"></script>
+</body>
+
+</html>
